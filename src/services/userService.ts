@@ -1,3 +1,5 @@
+import { getUserFromStorage } from "../utils/localStorage";
+
 const baseUrl = "http://localhost:8080/users";
 
 export interface IValueLogin {
@@ -10,6 +12,25 @@ export interface IValueRegister{
     email: string;
     password: string;
     imageURL: string;
+}
+
+export interface IFetchedUser{
+    name: string;
+    email: string;
+    createdOn: string;
+    imageURL: string;
+    level: number;
+    gold : number;
+    EXP : number;
+    strength : number;
+    dexterity : number;
+    constitution: number;
+    intelligence: number;
+    items: Map<string,string>;
+    weaponShop: Map<string,string>;
+    magicShop: Map<string,string>;
+    mount: string;
+    mountImageURL: string;
 }
 
 export const login = async(values : IValueLogin) => {
@@ -67,5 +88,27 @@ export const login = async(values : IValueLogin) => {
 
     return jwt;
   };
+
+  export const getUser = async (email: string) => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
   
+    const response = await fetch(`${baseUrl}/${email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
   
+    if (response.status == 204) {
+      return "";
+    }
+  
+    const data : IFetchedUser  = await response.json();
+  
+    return data;
+  };

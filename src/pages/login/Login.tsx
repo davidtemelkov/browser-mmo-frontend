@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { IValueLogin, login } from "../../services/userService";
+import { IValueLogin, getUser, login } from "../../services/userService";
 import { Link, useNavigate } from "react-router-dom";
 import { ITokenPayload, decodeToken } from "../../utils/jwt";
 import { saveToStorage } from "../../utils/localStorage";
@@ -18,23 +18,17 @@ export const Login: FC = () => {
         const jwt = await login(values)
         saveToStorage("user", jwt);
 
-        //   const decodeTokenData: ITokenPayload = await decodeToken();
-    
-        //   if (setUserName) {
-        //     const name = decodeTokenData["name"];
-    
-        //     setUserName(name);
-        //     saveToStorage("name", name);
-        //   }
-        //   if (setUserEmail) {
-        //     const email = decodeTokenData["email"];
-    
-        //     setUserEmail(email);
-        //     saveToStorage("email", email);
-        //   }
+        const decodeTokenData: ITokenPayload = await decodeToken();
+
+        const name = decodeTokenData["name"];
+        const email = decodeTokenData["email"];
+
+        saveToStorage("name", name);
+        saveToStorage("email", email);
+        
         navigate("/")
       };
-      
+
     return (
         <>
           <div className="grid grid-cols-2 gap-10 py-24 px-20 md:grid-cols-1 md:py-20 md:px-10 md:gap-14 sm:py-10 sm:px-8">
