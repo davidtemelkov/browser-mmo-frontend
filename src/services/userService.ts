@@ -105,7 +105,7 @@ export const login = async(values : IValueLogin) => {
     });
   
     if (response.status == 204) {
-      return "";
+      throw new Error("")
     }
   
     const data : IFetchedUser  = await response.json();
