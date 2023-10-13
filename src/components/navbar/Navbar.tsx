@@ -6,8 +6,8 @@ export const Navbar: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className=" fixed w-full z-50 py-3 px-20 bg-secondary flex flex-wrap text-white sm:px-7 sm:justify-between">
-      <ul className="flex flex-wrap">
+    <nav className="fixed w-full py-3 px-20 sm:px-7 sm:justify-between">
+      <ul className="flex">
         <li>
           <Link to="/">Home</Link>
         </li>

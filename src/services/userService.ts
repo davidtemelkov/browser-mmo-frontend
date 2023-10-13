@@ -22,6 +22,7 @@ export interface IFetchedUser{
     level: number;
     gold : number;
     EXP : number;
+    bigDPoints : number;
     strength : number;
     dexterity : number;
     constitution: number;
@@ -29,6 +30,7 @@ export interface IFetchedUser{
     items: Map<string,string>;
     weaponShop: Map<string,string>;
     magicShop: Map<string,string>;
+    inventory: Map<string,string>;
     mount: string;
     mountImageURL: string;
 }
