@@ -81,9 +81,9 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex h-[100%]">
+    <div className="flex h-[100%] bg-opacity-60 bg-red-800">
       {/* Left Section - Info and stats */}
-      <div className="p-4 shadow-md rounded-md mr-4 flex-1 w-1/2 h-[100%]">
+      <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
         <div className="flex border-solid border-2 rounded-md">
           <img src={user?.imageURL} alt={user?.name} className="w-2/5 mb-4" />
           <div className="flex-col justify-evenly">
@@ -163,47 +163,67 @@ export const Profile: FC = () => {
       </div>
 
       {/* Right Section - Inventory and Items */}
-      <div className="p-4 shadow-md rounded-md flex-col w-1/2 h-[100%]">
-        <div className="h-2/3 flex w-full items-center">
-          <div className="flex-col w-1/3 h-[100%]">
-            <div id="weapon" className="border-2 rounded-md mb-2">
-              <img src="https://i.imgur.com/WwgIFZF.png" alt="" />
+      <div className="p-4 rounded-md flex flex-col w-1/2 h-[100%] justify-center">
+        <div className="h-2/3 flex w-full justify-center gap-x-3">
+          <div className="flex flex-col h-[100%] w-1/5 justify-center">
+            <div id="weapon" className="border-2 rounded-md mb-2 w-[100%]">
+              <img
+                src="https://i.imgur.com/WwgIFZF.png"
+                alt=""
+                className="w-[100%]"
+              />
             </div>
-            <div id="gloves" className="p-2 border-2 rounded-md mb-2">
+            <div id="gloves" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNaXAnkP3ISqA_0Sd-EZlPnvP9pavZGTPpGQ&usqp=CAU"
                 alt=""
+                className="w-[100%]"
               />
             </div>
           </div>
-          <div className="flex-col w-1/3 h-[100%]">
-            <div id="helmet" className="p-2 border rounded-md mb-2 ">
+          <div className="flex flex-col h-[100%] w-1/5 justify-center">
+            <div id="helmet" className="border rounded-md mb-2 w-[100%]">
               <img
                 src="https://i.gyazo.com/deafcb77e357c84500351d52c1637e9c.jpg"
                 alt=""
+                className="w-[100%]"
               />
             </div>
-            <div id="chestplate" className="p-2 border-2 rounded-md mb-2 ">
-              <img src="https://i.imgur.com/uXIQwgV.png?1" alt="" />
+            <div id="chestplate" className="border-2 rounded-md mb-2 w-[100%]">
+              <img
+                src="https://i.imgur.com/uXIQwgV.png?1"
+                alt=""
+                className="w-[100%]"
+              />
             </div>
-            <div id="boots" className="p-2 border-2 rounded-md mb-2 ">
+            <div id="boots" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src="https://i.ibb.co/BC2528K/Screenshot-from-2021-10-09-22-49-58.png"
                 alt=""
+                className="w-[100%]"
               />
             </div>
           </div>
-          <div className="flex-col w-1/3 h-[100%]">
-            <div id="amulet" className="p-2 border-2 rounded-md mb-2 w-5/12">
-              <img src="https://i.imgur.com/G9q3grx.png" alt="" />
+          <div className="flex flex-col  h-[100%] w-1/5 justify-center">
+            <div id="amulet" className="border-2 rounded-md mb-2 w-[60%]">
+              <img
+                src="https://i.imgur.com/G9q3grx.png"
+                alt=""
+                className="w-[100%]"
+              />
             </div>
-            <div id="shield" className="p-2 border rounded-md mb-2">
-              <img src="https://i.imgur.com/TuxTeLp.png" alt="" />
+            <div id="shield" className="border rounded-md mb-2 w-[100%]">
+              <img
+                src="https://i.imgur.com/TuxTeLp.png"
+                alt=""
+                className="w-[100%]"
+              />
             </div>
-            <div id="ring" className="p-2 border rounded-md mb-2 w-5/12">
+            <div id="ring" className="border rounded-md mb-2 w-[60%]">
               <img
                 src="https://i.ibb.co/sPhB0sv/Screenshot-from-2021-10-04-23-05-42.png"
                 alt=""
+                className="w-[100%]"
               />
             </div>
           </div>
