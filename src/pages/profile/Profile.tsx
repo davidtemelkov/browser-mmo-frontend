@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { IFetchedUser, getUser } from "../../services/userService";
+import { useParams } from "react-router-dom";
 
 export const Profile: FC = () => {
   const [user, setUser] = useState<IFetchedUser>({
@@ -61,10 +62,11 @@ export const Profile: FC = () => {
     mount: "",
     mountImageURL: "",
   });
+  const { email } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUser = await getUser("misc@abv.bg");
+      const fetchedUser = await getUser(email!);
       setUser(fetchedUser!);
     };
 
@@ -79,9 +81,9 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex max-h-screen">
+    <div className="flex h-[100%]">
       {/* Left Section - Info and stats */}
-      <div className="p-4 shadow-md rounded-md mr-4 flex-1 w-1/2 h-screen">
+      <div className="p-4 shadow-md rounded-md mr-4 flex-1 w-1/2 h-[100%]">
         <div className="flex border-solid border-2 rounded-md">
           <img src={user?.imageURL} alt={user?.name} className="w-2/5 mb-4" />
           <div className="flex-col justify-evenly">
@@ -161,9 +163,9 @@ export const Profile: FC = () => {
       </div>
 
       {/* Right Section - Inventory and Items */}
-      <div className="p-4 shadow-md rounded-md flex-col w-1/2 h-screen ">
+      <div className="p-4 shadow-md rounded-md flex-col w-1/2 h-[100%]">
         <div className="h-2/3 flex w-full items-center">
-          <div className="flex-col w-1/3">
+          <div className="flex-col w-1/3 h-[100%]">
             <div id="weapon" className="border-2 rounded-md mb-2">
               <img src="https://i.imgur.com/WwgIFZF.png" alt="" />
             </div>
@@ -174,7 +176,7 @@ export const Profile: FC = () => {
               />
             </div>
           </div>
-          <div className="flex-col w-1/3">
+          <div className="flex-col w-1/3 h-[100%]">
             <div id="helmet" className="p-2 border rounded-md mb-2 ">
               <img
                 src="https://i.gyazo.com/deafcb77e357c84500351d52c1637e9c.jpg"
@@ -191,7 +193,7 @@ export const Profile: FC = () => {
               />
             </div>
           </div>
-          <div className="flex-col w-1/3">
+          <div className="flex-col w-1/3 h-[100%]">
             <div id="amulet" className="p-2 border-2 rounded-md mb-2 w-5/12">
               <img src="https://i.imgur.com/G9q3grx.png" alt="" />
             </div>

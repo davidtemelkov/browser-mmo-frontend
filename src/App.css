@@ -1,6 +1,6 @@
-/* #root {
-  display: flex;
-}  */
+#root {
+  max-height: 100vh;
+} 
 
 /* .logo {
   height: 6em;

@@ -25,50 +25,62 @@ export const Login: FC = () => {
     saveToStorage("name", name);
     saveToStorage("email", email);
 
-    navigate("/profile");
+    navigate(`/profile/${email}`);
   };
 
   return (
-    <>
-      <div className="grid grid-cols-2 gap-10 py-24 px-20 md:grid-cols-1 md:py-20 md:px-10 md:gap-14 sm:py-10 sm:px-8">
-        <div className="w-2/3 border-2 border-info px-7 py-5 mx-auto rounded-md sm:w-full">
-          <form data-testid="form" onSubmit={handleLogin}>
-            <h2 className="m-6 text-center text-2xl font-bold text-accent">
-              Log in
-            </h2>
-            <label htmlFor="email">Email</label>
+    <div className="bg-login bg-cover  flex justify-center w-[100%] h-[100%] text-white">
+      <div className="flex justify-center items-center py-3">
+        <form
+          data-testid="form"
+          onSubmit={handleLogin}
+          className="border-2 rounded-md p-5 bg-black "
+        >
+          <h2 className="m-6 text-center text-2xl font-bold text-accent">
+            Log in
+          </h2>
+          <label htmlFor="email">Email</label>
+          <div className="m-1">
+            {" "}
             <input
               type="text"
               placeholder="Enter Email"
               name="email"
               onChange={onChangeHandler}
               value={values["email"]}
+              className="border-2 rounded-md p-1"
             ></input>
-            <label htmlFor="password">Password</label>
+          </div>
+          <label htmlFor="password">Password</label>
+          <div className="m-1">
+            {" "}
             <input
               type="password"
               placeholder="Enter Password"
               name="password"
               onChange={onChangeHandler}
               value={values["password"]}
+              className="border-2 rounded-md p-1"
             ></input>
-            <button className="btn btn-secondary w-full my-5">Submit</button>
+          </div>
 
-            <p className="text-center text-accent">
-              Forgot{" "}
-              <a href="" className="text-blue-500">
-                Password?
-              </a>
-            </p>
-            <p className="text-center text-accent">
-              Don't have an account?
-              <Link className="text-blue-500 m-1" to="/register">
-                Sign up
-              </Link>
-            </p>
-          </form>
-        </div>
+          <button className="btn p-1 my-5 border-2 rounded-md" type="submit">
+            Submit
+          </button>
+
+          <p className="text-center text-accent">
+            <a href="" className="text-blue-500">
+              Forgot Password?
+            </a>
+          </p>
+          <p className="text-center text-accent">
+            Don't have an account?
+            <Link className="text-blue-500 m-1" to="/register">
+              Sign up
+            </Link>
+          </p>
+        </form>
       </div>
-    </>
+    </div>
   );
 };

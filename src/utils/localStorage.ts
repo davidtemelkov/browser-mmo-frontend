@@ -45,7 +45,7 @@ export interface IUserData {
       return "";
     }
   
-    const data = JSON.parse(storageData);
+    const data = storageData;
   
     return data;
   };
