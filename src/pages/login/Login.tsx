@@ -29,12 +29,12 @@ export const Login: FC = () => {
   };
 
   return (
-    <div className="bg-login bg-cover  flex justify-center w-[100%] h-[100%] text-white">
+    <div className="flex justify-center w-[100%] h-[100%]">
       <div className="flex justify-center items-center py-3">
         <form
           data-testid="form"
           onSubmit={handleLogin}
-          className="border-2 rounded-md p-5 bg-black "
+          className="border-2 rounded-md p-5 bg-blue-200 flex flex-col justify-center items-center"
         >
           <h2 className="m-6 text-center text-2xl font-bold text-accent">
             Log in

@@ -1,19 +1,26 @@
 import { FC } from "react";
 import { Navbar } from "../navbar";
+import { Footer } from "../footer";
 import { Outlet } from "react-router-dom";
+import "./layout.css";
+import { Sidebar } from "../sidebar";
 
 export const Layout: FC = () => {
   return (
-    <>
-      <header>
+    <div className="holy-grail-grid bg-pixel bg-cover">
+      <header className="header">
         <Navbar />
       </header>
-      <div className="flex h-[97vh]">
-        <main className="h-[100%] m-auto w-[100%]">
-          <Outlet />
-        </main>
-      </div>
-      {/* <Footer /> */}
-    </>
+      <main className="main-content h-[calc(100vh-110px)] overflow-hidden rounded-md">
+        <Outlet />
+      </main>
+      <section className="left-sidebar">
+        <Sidebar />
+      </section>
+      <aside className="right-sidebar"></aside>
+      <footer className="footer">
+        <Footer />
+      </footer>
+    </div>
   );
 };

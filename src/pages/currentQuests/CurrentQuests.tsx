@@ -109,7 +109,7 @@ export const CurrentQuests: FC = () => {
   }, [email]);
 
   return (
-    <div className="flex w-[100%] h-[100%] justify-center items-center gap-2 bg-opacity-60 bg-red-800">
+    <div className="flex w-[100%] h-[100%] justify-center items-center gap-2 bg-blue-200">
       {fetchedUser.currentQuests &&
         Array.from(fetchedUser.currentQuests.values()).map((quest, index) => (
           <div className="flex flex-col w-[33%] h-[100%] justify-center items-center">

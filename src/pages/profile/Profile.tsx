@@ -94,78 +94,70 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex h-[100%] bg-opacity-60 bg-red-800">
+    <div className="flex h-[100%] bg-blue-200">
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
-        <div className="flex rounded-md h-[30%]">
+        <div className="flex rounded-md h-[25%]">
           <img src={user?.imageURL} alt={user?.name} className="w-[40%]" />
-          <div className="flex-col ml-5">
-            <div>
-              <p className="text-l font-semibold">Name</p>
-              <p>{user?.name}</p>
-            </div>
-            <div>
-              <p className="text-l font-semibold">Level</p>
-              <p>{user?.level} </p>
-            </div>
-            <div>
-              <p className="text-l font-semibold">Exprerience</p>
-              <p> {user?.EXP}</p>
-            </div>
-            <div>
-              <p className="text-l font-semibold">Big D Points</p>
-              <p> {user?.bigDPoints}</p>
-            </div>
+          <div className="ml-5 h-[100%]">
+            <p className="leading-[1.20rem] font-semibold">Name</p>
+            <p className="leading-[1.20rem]">{user?.name}</p>
+            <p className="leading-[1.20rem] font-semibold">Level</p>
+            <p className="leading-[1.20rem]">{user?.level} </p>
+            <p className="leading-[1.20rem] font-semibold">Exprerience</p>
+            <p className="leading-[1.20rem]"> {user?.EXP}</p>
+            <p className="leading-[1.20rem] font-semibold">Big D Points</p>
+            <p className="leading-[1.20rem]"> {user?.bigDPoints}</p>
           </div>
         </div>
 
-        <div className="mt-5 h-[70%]">
-          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
+        <div className="h-[70%]">
+          <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Strength</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.strength}</p>
               <button
                 onClick={() => increaseStat("strength")}
-                className="border-2 ml-3 p-1 w-[4%] h-[4%] rounded-md"
+                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
               </button>
             </div>
             <p className="ml-[45%]">Damage: 0/0</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
+          <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.dexterity}</p>
               <button
                 onClick={() => increaseStat("dexterity")}
-                className="border-2 ml-3 p-1 w-[4%] h-[4%] rounded-md"
+                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
               </button>
             </div>
             <p className="ml-[45%]">Crit: 33%</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
+          <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Constitution</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.constitution}</p>
               <button
                 onClick={() => increaseStat("constitution")}
-                className="border-2 ml-3 p-1 w-[4%] h-[4%] rounded-md"
+                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
               </button>
             </div>
             <p className="ml-[45%]">Life: 300</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
+          <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Intelligence</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.intelligence}</p>
               <button
                 onClick={() => increaseStat("intelligence")}
-                className="border-2 ml-3 p-1 w-[4%] h-[4%] rounded-md"
+                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
               </button>
@@ -177,8 +169,8 @@ export const Profile: FC = () => {
 
       {/* Right Section - Inventory and Items */}
       <div className="p-4 rounded-md flex flex-col w-1/2 h-[100%] justify-center">
-        <div className="h-2/3 flex w-full justify-center gap-x-3">
-          <div className="flex flex-col h-[100%] w-1/5 justify-center">
+        <div className="h-[75%] flex w-full justify-center gap-x-3">
+          <div className="flex flex-col h-[100%] w-[25%] justify-center">
             <div id="weapon" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src="https://i.imgur.com/WwgIFZF.png"
@@ -194,7 +186,7 @@ export const Profile: FC = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col h-[100%] w-1/5 justify-center">
+          <div className="flex flex-col h-[100%] w-[25%] justify-center">
             <div id="helmet" className="border rounded-md mb-2 w-[100%]">
               <img
                 src="https://i.gyazo.com/deafcb77e357c84500351d52c1637e9c.jpg"
@@ -217,7 +209,7 @@ export const Profile: FC = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col  h-[100%] w-1/5 justify-center">
+          <div className="flex flex-col  h-[100%] w-[25%] justify-center">
             <div id="amulet" className="border-2 rounded-md mb-2 w-[60%]">
               <img
                 src="https://i.imgur.com/G9q3grx.png"
@@ -241,7 +233,7 @@ export const Profile: FC = () => {
             </div>
           </div>
         </div>
-        <div id="inventory" className="flex h-1/3 w-full border-2">
+        <div id="inventory" className="flex h-[25%] w-full border-2">
           <img
             src="https://preview.redd.it/gvquk4atgc531.png?width=589&format=png&auto=webp&s=8f031dfe5f970581ba600c25426dbc08968dbbcc"
             alt=""
