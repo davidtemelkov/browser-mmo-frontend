@@ -1,5 +1,10 @@
 import { FC, useEffect, useState } from "react";
-import { IFetchedUser, getUser } from "../../services/userService";
+import {
+  IFetchedUser,
+  IQuest,
+  getUser,
+  initialQuest,
+} from "../../services/userService";
 import { useParams } from "react-router-dom";
 
 export const Profile: FC = () => {
@@ -61,7 +66,15 @@ export const Profile: FC = () => {
     ]),
     mount: "",
     mountImageURL: "",
+    isQuesting: false,
+    isWorking: false,
+    currentQuests: new Map<string, IQuest>([
+      ["0", { ...initialQuest }],
+      ["1", { ...initialQuest }],
+      ["2", { ...initialQuest }],
+    ]),
   });
+
   const { email } = useParams();
 
   useEffect(() => {
@@ -84,9 +97,9 @@ export const Profile: FC = () => {
     <div className="flex h-[100%] bg-opacity-60 bg-red-800">
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
-        <div className="flex border-solid border-2 rounded-md">
-          <img src={user?.imageURL} alt={user?.name} className="w-2/5 mb-4" />
-          <div className="flex-col justify-evenly">
+        <div className="flex rounded-md h-[30%]">
+          <img src={user?.imageURL} alt={user?.name} className="w-[40%]" />
+          <div className="flex-col ml-5">
             <div>
               <p className="text-l font-semibold">Name</p>
               <p>{user?.name}</p>
@@ -106,8 +119,8 @@ export const Profile: FC = () => {
           </div>
         </div>
 
-        <div className="mt-10">
-          <div className="border-2 rounded-md p-3 mb-3">
+        <div className="mt-5 h-[70%]">
+          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
             <p className="text-xl font-bold">Strength</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.strength}</p>
@@ -120,7 +133,7 @@ export const Profile: FC = () => {
             </div>
             <p className="ml-[45%]">Damage: 0/0</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3">
+          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
             <p className="text-xl font-bold">Dexterity</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.dexterity}</p>
@@ -133,7 +146,7 @@ export const Profile: FC = () => {
             </div>
             <p className="ml-[45%]">Crit: 33%</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3">
+          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
             <p className="text-xl font-bold">Constitution</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.constitution}</p>
@@ -146,7 +159,7 @@ export const Profile: FC = () => {
             </div>
             <p className="ml-[45%]">Life: 300</p>
           </div>
-          <div className="border-2 rounded-md p-3 mb-3">
+          <div className="border-2 rounded-md p-3 mb-3 h-[6.5rem]">
             <p className="text-xl font-bold">Intelligence</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.intelligence}</p>

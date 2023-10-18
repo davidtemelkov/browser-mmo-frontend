@@ -33,7 +33,26 @@ export interface IFetchedUser{
     inventory: Map<string,string>;
     mount: string;
     mountImageURL: string;
+    isQuesting: boolean,
+    isWorking: boolean,
+    currentQuests: Map<string, IQuest>;
 }
+
+export interface IQuest{
+  Name: string;
+  ImageURL: string;
+  Time: string;
+  EXP: string;
+  Gold: string;
+}
+
+export const initialQuest: IQuest = {
+  Name: "", // Note: Property names should match the response
+  ImageURL: "",
+  Time: "",
+  EXP: "",
+  Gold: "",
+};
 
 export const login = async(values : IValueLogin) => {
     const body = JSON.stringify(values);

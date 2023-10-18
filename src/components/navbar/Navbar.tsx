@@ -18,6 +18,9 @@ export const Navbar: FC = () => {
               <Link to={`/profile/${getEmailFromStorage()}`}>Profile</Link>
             </li>
             <li className="ml-10">
+              <Link to={`/quests/${getEmailFromStorage()}`}>Quests</Link>
+            </li>
+            <li className="ml-10">
               <button
                 onClick={() => {
                   clearStorage();
