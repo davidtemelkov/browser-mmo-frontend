@@ -35,7 +35,7 @@ export const Navbar: FC = () => {
           </li>
         )}
         {getUserFromStorage() && (
-          <li className="border-2 rounded-md w-[5%] text-center bg-blue-200 mr-[100px]">
+          <li className="border-2 rounded-md text-center bg-blue-200 mr-[100px]">
             <button
               onClick={() => {
                 clearStorage();

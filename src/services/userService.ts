@@ -27,10 +27,10 @@ export interface IFetchedUser{
     dexterity : number;
     constitution: number;
     intelligence: number;
-    items: Map<string,string>;
-    weaponShop: Map<string,string>;
-    magicShop: Map<string,string>;
-    inventory: Map<string,string>;
+    items: Map<string,IItem>;
+    weaponShop: Map<string,IItem>;
+    magicShop: Map<string,IItem>;
+    inventory: Map<string,IItem>;
     mount: string;
     mountImageURL: string;
     isQuesting: boolean,
@@ -54,11 +54,29 @@ export const initialQuest: IQuest = {
   Gold: "",
 };
 
+export const initialItem: IItem = {
+  id: "0",
+  name: "",
+  level: "",
+  damageMin: 0,
+  damageMax: 0,
+  damageAverage: 0,
+  strength: 0,
+  dexterity: 0,
+  constitution: 0,
+  intelligence: 0,
+  armourAmount: 0,
+  blockChance: 0,
+  isLegendary: false,
+  imageURL: "",
+  price: 0
+};
+
 export const initalUser : IFetchedUser = {
   name: "name",
   email: "email@abv.bg",
   createdOn: "00-00-00T00:000:00",
-  imageURL: "https://ibb.co/sWmhkXw",
+  imageURL: "",
   level: 0,
   gold: 0,
   EXP: 0,
@@ -67,48 +85,48 @@ export const initalUser : IFetchedUser = {
   dexterity: 0,
   constitution: 0,
   intelligence: 0,
-  items: new Map<string, string>([
-    ["Amulet", "https://ibb.co/sWmhkXw"],
-    ["Boots", "https://ibb.co/sWmhkXw"],
-    ["Chestplate", "https://ibb.co/sWmhkXw"],
-    ["Gloves", "https://ibb.co/sWmhkXw"],
-    ["Helmet", "https://ibb.co/sWmhkXw"],
-    ["Ring", "https://ibb.co/sWmhkXw"],
-    ["Shield", "https://ibb.co/sWmhkXw"],
-    ["Weapon", "https://ibb.co/sWmhkXw"],
+  items: new Map<string, IItem>([
+    ["Amulet", { ...initialItem }],
+    ["Boots", {... initialItem}],
+    ["Chestplate", {... initialItem}],
+    ["Gloves", {... initialItem}],
+    ["Helmet", {... initialItem}],
+    ["Ring", {... initialItem}],
+    ["Shield", {... initialItem}],
+    ["Weapon", {... initialItem}],
   ]),
-  weaponShop: new Map<string, string>([
-    ["1", ""],
-    ["2", ""],
-    ["3", ""],
-    ["4", ""],
-    ["5", ""],
-    ["6", ""],
+  weaponShop: new Map<string, IItem>([
+    ["1", {... initialItem}],
+    ["2", {... initialItem}],
+    ["3", {... initialItem}],
+    ["4", {... initialItem}],
+    ["5", {... initialItem}],
+    ["6", {... initialItem}],
   ]),
-  magicShop: new Map<string, string>([
-    ["1", ""],
-    ["2", ""],
-    ["3", ""],
-    ["4", ""],
-    ["5", ""],
-    ["6", ""],
+  magicShop: new Map<string, IItem>([
+    ["1", {... initialItem}],
+    ["2", {... initialItem}],
+    ["3", {... initialItem}],
+    ["4", {... initialItem}],
+    ["5", {... initialItem}],
+    ["6", {... initialItem}],
   ]),
-  inventory: new Map<string, string>([
-    ["1", ""],
-    ["2", ""],
-    ["3", ""],
-    ["4", ""],
-    ["5", ""],
-    ["6", ""],
-    ["7", ""],
-    ["8", ""],
-    ["9", ""],
-    ["10", ""],
-    ["11", ""],
-    ["12", ""],
-    ["13", ""],
-    ["14", ""],
-    ["15", ""],
+  inventory: new Map<string, IItem>([
+    ["1", {... initialItem}],
+    ["2", {... initialItem}],
+    ["3", {... initialItem}],
+    ["4", {... initialItem}],
+    ["5", {... initialItem}],
+    ["6", {... initialItem}],
+    ["7", {... initialItem}],
+    ["8", {... initialItem}],
+    ["9", {... initialItem}],
+    ["10", {... initialItem}],
+    ["11", {... initialItem}],
+    ["12", {... initialItem}],
+    ["13", {... initialItem}],
+    ["14", {... initialItem}],
+    ["15", {... initialItem}],
   ]),
   mount: "",
   mountImageURL: "",
@@ -119,6 +137,24 @@ export const initalUser : IFetchedUser = {
     ["1", { ...initialQuest }],
     ["2", { ...initialQuest }],
   ]),
+}
+
+export interface IItem{
+  id: string;
+  name: string;
+  level: string;
+  damageMin: number;
+  damageMax: number;
+  damageAverage: number;
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  armourAmount: number;
+  blockChance: number;
+  isLegendary: boolean;
+  imageURL: string;
+  price: number;
 }
 
 export const login = async(values : IValueLogin) => {

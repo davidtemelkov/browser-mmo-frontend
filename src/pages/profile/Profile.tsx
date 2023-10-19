@@ -23,6 +23,7 @@ export const Profile: FC = () => {
     };
 
     fetchData();
+    console.log(user);
   }, []);
 
   const increaseStrength = async () => {
@@ -150,14 +151,22 @@ export const Profile: FC = () => {
           <div className="flex flex-col h-[100%] w-[25%] justify-center">
             <div id="weapon" className="border-2 rounded-md mb-2 w-[100%]">
               <img
-                src="https://i.imgur.com/WwgIFZF.png"
+                src={
+                  user.items instanceof Map && user.items.has("Weapon")
+                    ? user.items.get("Weapon")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
             </div>
             <div id="gloves" className="border-2 rounded-md mb-2 w-[100%]">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNaXAnkP3ISqA_0Sd-EZlPnvP9pavZGTPpGQ&usqp=CAU"
+                src={
+                  user.items instanceof Map && user.items.has("Gloves")
+                    ? user.items.get("Gloves")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
@@ -166,21 +175,33 @@ export const Profile: FC = () => {
           <div className="flex flex-col h-[100%] w-[25%] justify-center">
             <div id="helmet" className="border rounded-md mb-2 w-[100%]">
               <img
-                src="https://i.gyazo.com/deafcb77e357c84500351d52c1637e9c.jpg"
+                src={
+                  user.items instanceof Map && user.items.has("Helmet")
+                    ? user.items.get("Helmet")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
             </div>
             <div id="chestplate" className="border-2 rounded-md mb-2 w-[100%]">
               <img
-                src="https://i.imgur.com/uXIQwgV.png?1"
+                src={
+                  user.items instanceof Map && user.items.has("Chestplate")
+                    ? user.items.get("Chestplate")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
             </div>
             <div id="boots" className="border-2 rounded-md mb-2 w-[100%]">
               <img
-                src="https://i.ibb.co/BC2528K/Screenshot-from-2021-10-09-22-49-58.png"
+                src={
+                  user.items instanceof Map && user.items.has("Boots")
+                    ? user.items.get("Boots")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
@@ -189,24 +210,44 @@ export const Profile: FC = () => {
           <div className="flex flex-col  h-[100%] w-[25%] justify-center">
             <div id="amulet" className="border-2 rounded-md mb-2 w-[60%]">
               <img
-                src="https://i.imgur.com/G9q3grx.png"
+                src={
+                  user.items instanceof Map && user.items.has("Amulet")
+                    ? user.items.get("Amulet")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
             </div>
             <div id="shield" className="border rounded-md mb-2 w-[100%]">
               <img
-                src="https://i.imgur.com/TuxTeLp.png"
+                src={
+                  user.items instanceof Map && user.items.has("Shield")
+                    ? user.items.get("Shield")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
             </div>
             <div id="ring" className="border rounded-md mb-2 w-[60%]">
               <img
-                src="https://i.ibb.co/sPhB0sv/Screenshot-from-2021-10-04-23-05-42.png"
+                src={
+                  user.items instanceof Map && user.items.has("Ring")
+                    ? user.items.get("Ring")!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
+                }
                 alt=""
                 className="w-[100%]"
               />
+            </div>
+            <div className="flex justify-end self-end">
+              <img
+                src="https://www.iconarchive.com/download/i129718/iconarchive/fairy-tale/Hero-Shield.1024.png"
+                alt=""
+                className="w-[30%]"
+              />
+              <p>0</p>
             </div>
           </div>
         </div>
