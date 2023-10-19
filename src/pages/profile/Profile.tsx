@@ -23,7 +23,6 @@ export const Profile: FC = () => {
     };
 
     fetchData();
-    console.log(user);
   }, []);
 
   const increaseStrength = async () => {
@@ -251,12 +250,25 @@ export const Profile: FC = () => {
             </div>
           </div>
         </div>
-        <div id="inventory" className="flex h-[25%] w-full border-2">
-          <img
-            src="https://preview.redd.it/gvquk4atgc531.png?width=589&format=png&auto=webp&s=8f031dfe5f970581ba600c25426dbc08968dbbcc"
-            alt=""
-            className="w-full h-full"
-          />
+        <div id="inventory" className="flex h-[25%] w-full border-2 flex-col">
+          {[...Array(3)].map((_, groupIndex) => (
+            <div key={groupIndex} className="flex w-full h-[33.33%]">
+              {[...Array(5)].map((_, slotIndex) => {
+                const slotNumber = groupIndex * 5 + slotIndex + 1;
+                const itemKey = `Item${slotNumber}`;
+                const imageUrl =
+                  user.items instanceof Map && user.items.has(itemKey)
+                    ? user.items.get(itemKey)!.imageURL
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
+
+                return (
+                  <div key={itemKey} className="border-2 rounded-md w-[100%]">
+                    <img src={imageUrl} alt="" className="h-[100%] w-[100%]" />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </div>
