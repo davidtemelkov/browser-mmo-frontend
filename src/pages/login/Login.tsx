@@ -25,7 +25,7 @@ export const Login: FC = () => {
     saveToStorage("name", name);
     saveToStorage("email", email);
 
-    navigate(`/profile/${email}`);
+    navigate(`/profile?email=${email}`);
   };
 
   return (

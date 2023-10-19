@@ -54,6 +54,73 @@ export const initialQuest: IQuest = {
   Gold: "",
 };
 
+export const initalUser : IFetchedUser = {
+  name: "name",
+  email: "email@abv.bg",
+  createdOn: "00-00-00T00:000:00",
+  imageURL: "https://ibb.co/sWmhkXw",
+  level: 0,
+  gold: 0,
+  EXP: 0,
+  bigDPoints: 0,
+  strength: 0,
+  dexterity: 0,
+  constitution: 0,
+  intelligence: 0,
+  items: new Map<string, string>([
+    ["Amulet", "https://ibb.co/sWmhkXw"],
+    ["Boots", "https://ibb.co/sWmhkXw"],
+    ["Chestplate", "https://ibb.co/sWmhkXw"],
+    ["Gloves", "https://ibb.co/sWmhkXw"],
+    ["Helmet", "https://ibb.co/sWmhkXw"],
+    ["Ring", "https://ibb.co/sWmhkXw"],
+    ["Shield", "https://ibb.co/sWmhkXw"],
+    ["Weapon", "https://ibb.co/sWmhkXw"],
+  ]),
+  weaponShop: new Map<string, string>([
+    ["1", ""],
+    ["2", ""],
+    ["3", ""],
+    ["4", ""],
+    ["5", ""],
+    ["6", ""],
+  ]),
+  magicShop: new Map<string, string>([
+    ["1", ""],
+    ["2", ""],
+    ["3", ""],
+    ["4", ""],
+    ["5", ""],
+    ["6", ""],
+  ]),
+  inventory: new Map<string, string>([
+    ["1", ""],
+    ["2", ""],
+    ["3", ""],
+    ["4", ""],
+    ["5", ""],
+    ["6", ""],
+    ["7", ""],
+    ["8", ""],
+    ["9", ""],
+    ["10", ""],
+    ["11", ""],
+    ["12", ""],
+    ["13", ""],
+    ["14", ""],
+    ["15", ""],
+  ]),
+  mount: "",
+  mountImageURL: "",
+  isQuesting: false,
+  isWorking: false,
+  currentQuests: new Map<string, IQuest>([
+    ["0", { ...initialQuest }],
+    ["1", { ...initialQuest }],
+    ["2", { ...initialQuest }],
+  ]),
+}
+
 export const login = async(values : IValueLogin) => {
     const body = JSON.stringify(values);
 
@@ -132,4 +199,92 @@ export const login = async(values : IValueLogin) => {
     const data : IFetchedUser  = await response.json();
   
     return data;
+  };
+
+  export const upgradeStrength = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/strength`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+  
+    if (response.status == 403) {
+      throw new Error("Not enough gold")
+    }
+
+    return response.status;
+  };
+
+  export const upgradeDexterity = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/dexterity`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+  
+    if (response.status == 403) {
+      throw new Error("Not enough gold")
+    }
+
+    return response.status;
+  };
+
+  export const upgradeConstitution = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/constitution`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+  
+    if (response.status == 403) {
+      throw new Error("Not enough gold")
+    }
+
+    return response.status;
+  };
+
+  export const upgradeIntelligence = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/intelligence`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+  
+    if (response.status == 403) {
+      throw new Error("Not enough gold")
+    }
+
+    return response.status;
   };

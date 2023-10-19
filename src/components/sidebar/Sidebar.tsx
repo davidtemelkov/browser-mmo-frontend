@@ -12,12 +12,12 @@ export const Sidebar: FC = () => {
     <ul className="flex flex-col gap-3 items-center">
       {getUserFromStorage() && (
         <li className="border-2 rounded-md w-[50%] text-center bg-blue-200">
-          <Link to={`/profile/${getEmailFromStorage()}`}>Profile</Link>
+          <Link to={`/profile?email=${getEmailFromStorage()}`}>Profile</Link>
         </li>
       )}
       {getUserFromStorage() && (
         <li className="border-2 rounded-md w-[50%] text-center bg-blue-200">
-          <Link to={`/quests/${getEmailFromStorage()}`}>Quests</Link>
+          <Link to={`/quests?email=${getEmailFromStorage()}`}>Quests</Link>
         </li>
       )}
     </ul>

@@ -1,81 +1,20 @@
 import { FC, useEffect, useState } from "react";
 import {
   IFetchedUser,
-  IQuest,
   getUser,
-  initialQuest,
+  initalUser,
+  upgradeConstitution,
+  upgradeDexterity,
+  upgradeIntelligence,
+  upgradeStrength,
 } from "../../services/userService";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 export const Profile: FC = () => {
-  const [user, setUser] = useState<IFetchedUser>({
-    name: "name",
-    email: "email@abv.bg",
-    createdOn: "00-00-00T00:000:00",
-    imageURL: "https://ibb.co/sWmhkXw",
-    level: 0,
-    gold: 0,
-    EXP: 0,
-    bigDPoints: 0,
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    items: new Map<string, string>([
-      ["Amulet", "https://ibb.co/sWmhkXw"],
-      ["Boots", "https://ibb.co/sWmhkXw"],
-      ["Chestplate", "https://ibb.co/sWmhkXw"],
-      ["Gloves", "https://ibb.co/sWmhkXw"],
-      ["Helmet", "https://ibb.co/sWmhkXw"],
-      ["Ring", "https://ibb.co/sWmhkXw"],
-      ["Shield", "https://ibb.co/sWmhkXw"],
-      ["Weapon", "https://ibb.co/sWmhkXw"],
-    ]),
-    weaponShop: new Map<string, string>([
-      ["1", ""],
-      ["2", ""],
-      ["3", ""],
-      ["4", ""],
-      ["5", ""],
-      ["6", ""],
-    ]),
-    magicShop: new Map<string, string>([
-      ["1", ""],
-      ["2", ""],
-      ["3", ""],
-      ["4", ""],
-      ["5", ""],
-      ["6", ""],
-    ]),
-    inventory: new Map<string, string>([
-      ["1", ""],
-      ["2", ""],
-      ["3", ""],
-      ["4", ""],
-      ["5", ""],
-      ["6", ""],
-      ["7", ""],
-      ["8", ""],
-      ["9", ""],
-      ["10", ""],
-      ["11", ""],
-      ["12", ""],
-      ["13", ""],
-      ["14", ""],
-      ["15", ""],
-    ]),
-    mount: "",
-    mountImageURL: "",
-    isQuesting: false,
-    isWorking: false,
-    currentQuests: new Map<string, IQuest>([
-      ["0", { ...initialQuest }],
-      ["1", { ...initialQuest }],
-      ["2", { ...initialQuest }],
-    ]),
-  });
+  const [user, setUser] = useState<IFetchedUser>(initalUser);
 
-  const { email } = useParams();
+  const location = useLocation();
+  const email = new URLSearchParams(location.search).get("email");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,11 +25,48 @@ export const Profile: FC = () => {
     fetchData();
   }, []);
 
-  const increaseStat = (stat: string) => {
-    // setUser((prevUser) => ({
-    //   ...prevUser,
-    //   [stat]: prevUser + 1
-    // }));
+  const increaseStrength = async () => {
+    const resp = await upgradeStrength();
+
+    if (resp) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        strength: prevUser.strength + 1,
+      }));
+    }
+  };
+
+  const increaseDexterity = async () => {
+    const resp = await upgradeDexterity();
+
+    if (resp) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        dexterity: prevUser.dexterity + 1,
+      }));
+    }
+  };
+
+  const increaseConstitution = async () => {
+    const resp = await upgradeConstitution();
+
+    if (resp) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        constitution: prevUser.constitution + 1,
+      }));
+    }
+  };
+
+  const increaseIntelligence = async () => {
+    const resp = await upgradeIntelligence();
+
+    if (resp) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        intelligence: prevUser.intelligence + 1,
+      }));
+    }
   };
 
   return (
@@ -98,7 +74,7 @@ export const Profile: FC = () => {
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
         <div className="flex rounded-md h-[25%]">
-          <img src={user?.imageURL} alt={user?.name} className="w-[40%]" />
+          <img src={user?.imageURL} alt={user?.name} className="w-[35%]" />
           <div className="ml-5 h-[100%]">
             <p className="leading-[1.20rem] font-semibold">Name</p>
             <p className="leading-[1.20rem]">{user?.name}</p>
@@ -117,7 +93,8 @@ export const Profile: FC = () => {
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.strength}</p>
               <button
-                onClick={() => increaseStat("strength")}
+                disabled={user.gold < user.strength}
+                onClick={() => increaseStrength()}
                 className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
@@ -130,7 +107,7 @@ export const Profile: FC = () => {
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.dexterity}</p>
               <button
-                onClick={() => increaseStat("dexterity")}
+                onClick={() => increaseDexterity()}
                 className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
@@ -143,7 +120,7 @@ export const Profile: FC = () => {
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.constitution}</p>
               <button
-                onClick={() => increaseStat("constitution")}
+                onClick={() => increaseConstitution()}
                 className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
@@ -156,7 +133,7 @@ export const Profile: FC = () => {
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.intelligence}</p>
               <button
-                onClick={() => increaseStat("intelligence")}
+                onClick={() => increaseIntelligence()}
                 className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
               >
                 +
