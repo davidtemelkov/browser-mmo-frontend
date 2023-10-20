@@ -27,15 +27,15 @@ export interface IFetchedUser{
     dexterity : number;
     constitution: number;
     intelligence: number;
-    items: Map<string,IItem>;
-    weaponShop: Map<string,IItem>;
-    magicShop: Map<string,IItem>;
-    inventory: Map<string,IItem>;
+    items: Record<string,IItem>;
+    weaponShop: Record<string,IItem>;
+    magicShop: Record<string,IItem>;
+    inventory: Record<string,IItem>;
     mount: string;
     mountImageURL: string;
     isQuesting: boolean,
     isWorking: boolean,
-    currentQuests: Map<string, IQuest>;
+    currentQuests: Record<string, IQuest>;
 }
 
 export interface IQuest{
@@ -85,58 +85,58 @@ export const initalUser : IFetchedUser = {
   dexterity: 0,
   constitution: 0,
   intelligence: 0,
-  items: new Map<string, IItem>([
-    ["Amulet", { ...initialItem }],
-    ["Boots", {... initialItem}],
-    ["Chestplate", {... initialItem}],
-    ["Gloves", {... initialItem}],
-    ["Helmet", {... initialItem}],
-    ["Ring", {... initialItem}],
-    ["Shield", {... initialItem}],
-    ["Weapon", {... initialItem}],
-  ]),
-  weaponShop: new Map<string, IItem>([
-    ["1", {... initialItem}],
-    ["2", {... initialItem}],
-    ["3", {... initialItem}],
-    ["4", {... initialItem}],
-    ["5", {... initialItem}],
-    ["6", {... initialItem}],
-  ]),
-  magicShop: new Map<string, IItem>([
-    ["1", {... initialItem}],
-    ["2", {... initialItem}],
-    ["3", {... initialItem}],
-    ["4", {... initialItem}],
-    ["5", {... initialItem}],
-    ["6", {... initialItem}],
-  ]),
-  inventory: new Map<string, IItem>([
-    ["1", {... initialItem}],
-    ["2", {... initialItem}],
-    ["3", {... initialItem}],
-    ["4", {... initialItem}],
-    ["5", {... initialItem}],
-    ["6", {... initialItem}],
-    ["7", {... initialItem}],
-    ["8", {... initialItem}],
-    ["9", {... initialItem}],
-    ["10", {... initialItem}],
-    ["11", {... initialItem}],
-    ["12", {... initialItem}],
-    ["13", {... initialItem}],
-    ["14", {... initialItem}],
-    ["15", {... initialItem}],
-  ]),
+  items: {
+    "Amulet": { ...initialItem },
+    "Boots": { ...initialItem },
+    "Chestplate": { ...initialItem },
+    "Gloves": { ...initialItem },
+    "Helmet": { ...initialItem },
+    "Ring": { ...initialItem },
+    "Shield": { ...initialItem },
+    "Weapon": { ...initialItem },
+  },
+  weaponShop:{
+    "Item1": { ...initialItem },
+    "Item2": { ...initialItem },
+    "Item3": { ...initialItem },
+    "Item4": { ...initialItem },
+    "Item5": { ...initialItem },
+    "Item6": { ...initialItem },
+  },
+  magicShop: {
+    "Item1": { ...initialItem },
+    "Item2": { ...initialItem },
+    "Item3": { ...initialItem },
+    "Item4": { ...initialItem },
+    "Item5": { ...initialItem },
+    "Item6": { ...initialItem },
+  },
+  inventory: {
+    "Item1": { ...initialItem },
+    "Item2": { ...initialItem },
+    "Item3": { ...initialItem },
+    "Item4": { ...initialItem },
+    "Item5": { ...initialItem },
+    "Item6": { ...initialItem },
+    "Item7": { ...initialItem },
+    "Item8": { ...initialItem },
+    "Item9": { ...initialItem },
+    "Item10": { ...initialItem },
+    "Item11": { ...initialItem },
+    "Item12": { ...initialItem },
+    "Item13": { ...initialItem },
+    "Item14": { ...initialItem },
+    "Item15": { ...initialItem },
+  },
   mount: "",
   mountImageURL: "",
   isQuesting: false,
   isWorking: false,
-  currentQuests: new Map<string, IQuest>([
-    ["0", { ...initialQuest }],
-    ["1", { ...initialQuest }],
-    ["2", { ...initialQuest }],
-  ]),
+  currentQuests: {
+    "Quest0": { ...initialQuest },
+    "Quest1": { ...initialQuest },
+    "Quest2": { ...initialQuest },
+  },
 }
 
 export interface IItem{

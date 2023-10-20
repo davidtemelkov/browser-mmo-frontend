@@ -100,9 +100,9 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">{`Damage: ${user.strength / 2}/${
-              user.strength
-            }`}</p>
+            <p className="ml-[45%]">{`Damage: ${Math.floor(
+              user.strength / 2
+            )}/${user.strength}`}</p>
           </div>
           <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
@@ -155,8 +155,8 @@ export const Profile: FC = () => {
             <div id="weapon" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Weapon")
-                    ? user.items.get("Weapon")!.imageURL
+                  user.items.Weapon.imageURL !== ""
+                    ? user.items.Weapon.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -166,8 +166,8 @@ export const Profile: FC = () => {
             <div id="gloves" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Gloves")
-                    ? user.items.get("Gloves")!.imageURL
+                  user.items.Gloves.imageURL !== ""
+                    ? user.items.Gloves.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -179,8 +179,8 @@ export const Profile: FC = () => {
             <div id="helmet" className="border rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Helmet")
-                    ? user.items.get("Helmet")!.imageURL
+                  user.items.Helmet.imageURL !== ""
+                    ? user.items.Helmet.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -190,8 +190,8 @@ export const Profile: FC = () => {
             <div id="chestplate" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Chestplate")
-                    ? user.items.get("Chestplate")!.imageURL
+                  user.items.Chestplate.imageURL !== ""
+                    ? user.items.Chestplate.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -201,8 +201,8 @@ export const Profile: FC = () => {
             <div id="boots" className="border-2 rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Boots")
-                    ? user.items.get("Boots")!.imageURL
+                  user.items.Boots.imageURL !== ""
+                    ? user.items.Boots.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -214,8 +214,8 @@ export const Profile: FC = () => {
             <div id="amulet" className="border-2 rounded-md mb-2 w-[60%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Amulet")
-                    ? user.items.get("Amulet")!.imageURL
+                  user.items.Amulet.imageURL !== ""
+                    ? user.items.Amulet.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -225,8 +225,8 @@ export const Profile: FC = () => {
             <div id="shield" className="border rounded-md mb-2 w-[100%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Shield")
-                    ? user.items.get("Shield")!.imageURL
+                  user.items.Shield.imageURL !== ""
+                    ? user.items.Shield.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -236,8 +236,8 @@ export const Profile: FC = () => {
             <div id="ring" className="border rounded-md mb-2 w-[60%]">
               <img
                 src={
-                  user.items instanceof Map && user.items.has("Ring")
-                    ? user.items.get("Ring")!.imageURL
+                  user.items.Ring.imageURL !== ""
+                    ? user.items.Ring.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -251,12 +251,12 @@ export const Profile: FC = () => {
                 className="w-[30%]"
               />
               <p>
-                {user.items instanceof Map
-                  ? user.items.get("Helmet")!.armourAmount +
-                    user.items.get("Chestplate")!.armourAmount +
-                    user.items.get("Gloves")!.armourAmount +
-                    user.items.get("Boots")!.armourAmount
-                  : 0}
+                {user.items
+                  ? user.items.Helmet.armourAmount +
+                    user.items.Chestplate.armourAmount +
+                    user.items.Gloves.armourAmount +
+                    user.items.Boots.armourAmount
+                  : 420}
               </p>
             </div>
           </div>
