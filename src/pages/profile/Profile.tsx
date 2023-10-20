@@ -1,29 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import {
-  IFetchedUser,
-  getUser,
-  initalUser,
   upgradeConstitution,
   upgradeDexterity,
   upgradeIntelligence,
   upgradeStrength,
 } from "../../services/userService";
-import { useLocation, useParams } from "react-router-dom";
+import { useUser } from "../../contexts/userContext";
 
 export const Profile: FC = () => {
-  const [user, setUser] = useState<IFetchedUser>(initalUser);
-
-  const location = useLocation();
-  const email = new URLSearchParams(location.search).get("email");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedUser = await getUser(email!);
-      setUser(fetchedUser!);
-    };
-
-    fetchData();
-  }, []);
+  const { user, setUser } = useUser();
 
   const increaseStrength = async () => {
     const resp = await upgradeStrength();
@@ -32,6 +17,7 @@ export const Profile: FC = () => {
       setUser((prevUser) => ({
         ...prevUser,
         strength: prevUser.strength + 1,
+        gold: prevUser.gold - prevUser.strength,
       }));
     }
   };
@@ -43,6 +29,7 @@ export const Profile: FC = () => {
       setUser((prevUser) => ({
         ...prevUser,
         dexterity: prevUser.dexterity + 1,
+        gold: prevUser.gold - prevUser.dexterity,
       }));
     }
   };
@@ -54,6 +41,7 @@ export const Profile: FC = () => {
       setUser((prevUser) => ({
         ...prevUser,
         constitution: prevUser.constitution + 1,
+        gold: prevUser.gold - prevUser.constitution,
       }));
     }
   };
@@ -65,6 +53,7 @@ export const Profile: FC = () => {
       setUser((prevUser) => ({
         ...prevUser,
         intelligence: prevUser.intelligence + 1,
+        gold: prevUser.gold - prevUser.intelligence,
       }));
     }
   };
