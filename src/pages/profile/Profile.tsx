@@ -100,7 +100,9 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">Damage: 0/0</p>
+            <p className="ml-[45%]">{`Damage: ${user.strength / 2}/${
+              user.strength
+            }`}</p>
           </div>
           <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
@@ -113,7 +115,9 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">Crit: 33%</p>
+            <p className="ml-[45%]">{`Crit: ${(user.dexterity * 0.01).toFixed(
+              2
+            )}%`}</p>
           </div>
           <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Constitution</p>
@@ -126,7 +130,7 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">Life: 300</p>
+            <p className="ml-[45%]">{`Life: ${100 + user.constitution}`}</p>
           </div>
           <div className="rounded-md p-3 mb-3 h-[25%]">
             <p className="text-xl font-bold">Intelligence</p>
@@ -139,7 +143,7 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">Fireball: 300</p>
+            <p className="ml-[45%]">{`Fireball: ${user.intelligence}`}</p>
           </div>
         </div>
       </div>
@@ -246,7 +250,14 @@ export const Profile: FC = () => {
                 alt=""
                 className="w-[30%]"
               />
-              <p>0</p>
+              <p>
+                {user.items instanceof Map
+                  ? user.items.get("Helmet")!.armourAmount +
+                    user.items.get("Chestplate")!.armourAmount +
+                    user.items.get("Gloves")!.armourAmount +
+                    user.items.get("Boots")!.armourAmount
+                  : 0}
+              </p>
             </div>
           </div>
         </div>
