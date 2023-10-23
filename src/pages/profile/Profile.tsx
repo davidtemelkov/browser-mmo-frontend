@@ -6,6 +6,7 @@ import {
   upgradeStrength,
 } from "../../services/userService";
 import { useUser } from "../../contexts/userContext";
+import { GiCheckedShield } from "react-icons/gi";
 
 export const Profile: FC = () => {
   const { user, setUser } = useUser();
@@ -234,12 +235,8 @@ export const Profile: FC = () => {
               />
             </div>
             <div className="flex justify-end self-end">
-              <img
-                src="https://www.iconarchive.com/download/i129718/iconarchive/fairy-tale/Hero-Shield.1024.png"
-                alt=""
-                className="w-[30%]"
-              />
-              <p>
+              <GiCheckedShield className="w-[100%] h-[100%]"></GiCheckedShield>
+              <p className="text-xl">
                 {user.items
                   ? user.items.Helmet.armourAmount +
                     user.items.Chestplate.armourAmount +
