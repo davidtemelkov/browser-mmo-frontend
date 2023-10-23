@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { clearStorage } from "../../utils/localStorage";
+import { clearStorage, getUserFromStorage } from "../../utils/localStorage";
 import { useUser } from "../../contexts/userContext";
 
 export const Navbar: FC = () => {
@@ -19,14 +19,14 @@ export const Navbar: FC = () => {
   return (
     <nav className="h-[100%]">
       <ul className="flex justify-between items-center h-[100%]">
-        {user && (
+        {getUserFromStorage() && (
           <li>
             <div className="border-2 rounded-md p-1 text-center bg-blue-200 ml-[200px]">
               Gold {gold}
             </div>
           </li>
         )}
-        {user && (
+        {getUserFromStorage() && (
           <li className="border-2 rounded-md text-center bg-blue-200 mr-[100px]">
             <button
               onClick={() => {

@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: theme => ({
-                'login': "url('/public/login.jpeg')",
-                'pixel': "url('/public/pixel.jpg')",
+                'login': "url('/login.jpeg')",
+                'pixel': "url('/pixel.jpg')",
                 })
     },
   },

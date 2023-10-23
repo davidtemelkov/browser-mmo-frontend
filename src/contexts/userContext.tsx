@@ -9,6 +9,7 @@ import {
 import { getUser, initalUser } from "../services/userService";
 import { getEmailFromStorage } from "../utils/localStorage";
 import { IFetchedUser } from "../services/userService";
+import { Loading } from "../components/loading";
 
 interface IUserContext {
   user: IFetchedUser;
@@ -23,6 +24,7 @@ interface UserProviderProps {
 
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IFetchedUser>(initalUser);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchUser() {
@@ -33,6 +35,7 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
           setUser(fetchedUser);
         }
       }
+      setIsLoading(false);
     }
 
     fetchUser();
@@ -40,7 +43,7 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      {children}
+      {isLoading ? <Loading /> : children}
     </UserContext.Provider>
   );
 };
