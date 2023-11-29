@@ -17,7 +17,7 @@ export const Sidebar: FC = () => {
       )}
       {getUserFromStorage() && (
         <li className="border-2 rounded-md w-[50%] text-center bg-blue-200">
-          <Link to={`/quests?email=${getEmailFromStorage()}`}>Quests</Link>
+          <Link to={`/quests`}>Quests</Link>
         </li>
       )}
     </ul>

@@ -1,22 +1,19 @@
 import { FC, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
 import { IFetchedUser, getUser, initalUser } from "../../services/userService";
+import { getEmailFromStorage } from "../../utils/localStorage";
 
 export const CurrentQuests: FC = () => {
-  const location = useLocation();
-  const email = new URLSearchParams(location.search).get("email");
-
   const [user, setUser] = useState<IFetchedUser>(initalUser);
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUser = await getUser(email!);
+      const fetchedUser = await getUser(getEmailFromStorage()!);
       setUser(fetchedUser!);
       console.log("Current User's Quests:", fetchedUser!.currentQuests);
     };
 
     fetchData();
-  }, [email]);
+  }, [user]);
 
   return (
     <div className="flex w-[100%] h-[100%] justify-center items-center gap-2 bg-blue-200">

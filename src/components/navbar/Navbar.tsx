@@ -21,12 +21,14 @@ export const Navbar: FC = () => {
       <ul className="flex justify-between items-center h-[100%]">
         {getUserFromStorage() && (
           <li>
+            {/* ml-[255px] for big screen, probably should be % */}
             <div className="border-2 rounded-md p-1 text-center bg-blue-200 ml-[200px]">
               Gold {gold}
             </div>
           </li>
         )}
         {getUserFromStorage() && (
+          // mr-[125px] for big screen, probably should be %
           <li className="border-2 rounded-md text-center bg-blue-200 mr-[100px]">
             <button
               onClick={() => {
