@@ -29,7 +29,7 @@ export const Navbar: FC = () => {
         )}
         {getUserFromStorage() && (
           // mr-[125px] for big screen, probably should be %
-          <li className="border-2 rounded-md text-center bg-blue-200 mr-[100px]">
+          <li className="border-2 p-1 rounded-md text-center bg-blue-200 mr-[100px]">
             <button
               onClick={() => {
                 clearStorage();
