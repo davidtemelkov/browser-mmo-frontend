@@ -9,11 +9,10 @@ export const CurrentQuests: FC = () => {
     const fetchData = async () => {
       const fetchedUser = await getUser(getEmailFromStorage()!);
       setUser(fetchedUser!);
-      console.log("Current User's Quests:", fetchedUser!.currentQuests);
     };
 
     fetchData();
-  }, [user]);
+  }, []);
 
   return (
     <div className="flex w-[100%] h-[100%] justify-center items-center gap-2 bg-blue-200">
