@@ -9,7 +9,6 @@ export const Navbar: FC = () => {
 
   const [gold, setGold] = useState(user ? user.gold : 0);
 
-  // Use useEffect to update the gold state when the user's gold changes
   useEffect(() => {
     if (user) {
       setGold(user.gold);
@@ -18,6 +17,9 @@ export const Navbar: FC = () => {
 
   return (
     <nav className="h-[100%]">
+      <div className="absolute top-[3%] ml-[2.7%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-[200%] text-white font-serif">
+        TanothStory
+      </div>
       {getUserFromStorage() && (
         <ul className="flex justify-between items-center h-[100%]">
           <li className="border-2 rounded-md p-1 text-center bg-blue-200 ml-[13.3%]">
