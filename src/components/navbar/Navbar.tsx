@@ -17,7 +17,7 @@ export const Navbar: FC = () => {
 
   return (
     <nav className="h-[100%]">
-      <div className="absolute top-[3%] ml-[2.7%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-[200%] text-white font-serif">
+      <div className="absolute top-[4%] ml-[2.7%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-[200%] text-white font-serif">
         TanothStory
       </div>
       {getUserFromStorage() && (
