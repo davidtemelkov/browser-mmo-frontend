@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import {
+  getUser,
   upgradeConstitution,
   upgradeDexterity,
   upgradeIntelligence,
@@ -7,9 +8,19 @@ import {
 } from "../../services/userService";
 import { useUser } from "../../contexts/userContext";
 import { GiCheckedShield } from "react-icons/gi";
+import { getEmailFromStorage } from "../../utils/localStorage";
 
 export const Profile: FC = () => {
   const { user, setUser } = useUser();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedUser = await getUser(getEmailFromStorage()!);
+      setUser(fetchedUser!);
+    };
+
+    fetchData();
+  }, []);
 
   const increaseStrength = async () => {
     const resp = await upgradeStrength();
