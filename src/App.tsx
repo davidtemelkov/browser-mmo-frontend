@@ -6,6 +6,7 @@ import { Layout } from "./components/layout";
 import { CurrentQuests } from "./pages/currentQuests";
 import { UserProvider } from "./contexts/userContext";
 import { Quest } from "./pages/Quest";
+import { Work } from "./pages/work/Work";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/quests" element={<CurrentQuests />} />
               <Route path="/quest" element={<Quest />} />
+              <Route path="/work" element={<Work />} />
             </Route>
           </Routes>
         </BrowserRouter>

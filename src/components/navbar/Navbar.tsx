@@ -18,18 +18,12 @@ export const Navbar: FC = () => {
 
   return (
     <nav className="h-[100%]">
-      <ul className="flex justify-between items-center h-[100%]">
-        {getUserFromStorage() && (
-          <li>
-            {/* ml-[255px] for big screen, probably should be % */}
-            <div className="border-2 rounded-md p-1 text-center bg-blue-200 ml-[200px]">
-              Gold {gold}
-            </div>
+      {getUserFromStorage() && (
+        <ul className="flex justify-between items-center h-[100%]">
+          <li className="border-2 rounded-md p-1 text-center bg-blue-200 ml-[13.3%]">
+            <div>Gold {gold}</div>
           </li>
-        )}
-        {getUserFromStorage() && (
-          // mr-[125px] for big screen, probably should be %
-          <li className="border-2 p-1 rounded-md text-center bg-blue-200 mr-[100px]">
+          <li className="border-2 p-1 rounded-md text-center bg-blue-200 mr-[6.6%]">
             <button
               onClick={() => {
                 clearStorage();
@@ -39,8 +33,8 @@ export const Navbar: FC = () => {
               Logout
             </button>
           </li>
-        )}
-      </ul>
+        </ul>
+      )}
     </nav>
   );
 };
