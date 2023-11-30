@@ -71,20 +71,34 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex h-[100%] bg-blue-200">
+    <div className="flex h-[100%] bg-blue-200 text-blue-600">
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
-        <div className="flex rounded-md h-[25%]">
-          <img src={user?.imageURL} alt={user?.name} className="w-[35%]" />
-          <div className="ml-5 h-[100%]">
-            <p className="leading-[1.20rem] font-semibold">Name</p>
-            <p className="leading-[1.20rem]">{user?.name}</p>
-            <p className="leading-[1.20rem] font-semibold">Level</p>
-            <p className="leading-[1.20rem]">{user?.level} </p>
-            <p className="leading-[1.20rem] font-semibold">Exprerience</p>
-            <p className="leading-[1.20rem]"> {user?.EXP}</p>
-            <p className="leading-[1.20rem] font-semibold">Big D Points</p>
-            <p className="leading-[1.20rem]"> {user?.bigDPoints}</p>
+        <div className="flex rounded-md w-full h-[30%]">
+          <img
+            src={user?.imageURL}
+            alt={user?.name}
+            className="w-[50%] rounded-md"
+          />
+          <div className="ml-5 h-[100%] w-full flex flex-col justify-around">
+            <div className="flex items-baseline gap-5">
+              <div className="font-semibold text-[135%]">Name</div>
+              <div className="font-semibold text-[120%]">{user?.name}</div>
+            </div>
+            <div className="flex items-baseline gap-5">
+              <div className="font-semibold text-[135%]">Level</div>
+              <div className="font-semibold text-[120%]">{user?.level}</div>
+            </div>
+            <div className="flex items-baseline gap-5">
+              <div className="font-semibold text-[135%]">Experience</div>
+              <div className="font-semibold text-[120%]">{user?.EXP}</div>
+            </div>
+            <div className="flex items-baseline gap-5">
+              <div className="font-semibold text-[135%]">Big D Points</div>
+              <div className="font-semibold text-[120%]">
+                {user?.bigDPoints}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -96,7 +110,7 @@ export const Profile: FC = () => {
               <button
                 disabled={user.gold < user.strength}
                 onClick={() => increaseStrength()}
-                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
+                className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
               >
                 +
               </button>
@@ -111,7 +125,7 @@ export const Profile: FC = () => {
               <p className="text-l font-semibold">{user?.dexterity}</p>
               <button
                 onClick={() => increaseDexterity()}
-                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
+                className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
               >
                 +
               </button>
@@ -126,7 +140,7 @@ export const Profile: FC = () => {
               <p className="text-l font-semibold">{user?.constitution}</p>
               <button
                 onClick={() => increaseConstitution()}
-                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
+                className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
               >
                 +
               </button>
@@ -139,7 +153,7 @@ export const Profile: FC = () => {
               <p className="text-l font-semibold">{user?.intelligence}</p>
               <button
                 onClick={() => increaseIntelligence()}
-                className="border-2 ml-3 p-1 w-[8%] h-[8%] rounded-md"
+                className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
               >
                 +
               </button>
@@ -153,7 +167,10 @@ export const Profile: FC = () => {
       <div className="p-4 rounded-md flex flex-col w-1/2 h-[100%] justify-center">
         <div className="h-[75%] flex w-full justify-center gap-x-3">
           <div className="flex flex-col h-[100%] w-[25%] justify-center">
-            <div id="weapon" className="border-2 rounded-md mb-2 w-[100%]">
+            <div
+              id="weapon"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Weapon.imageURL !== ""
@@ -164,7 +181,10 @@ export const Profile: FC = () => {
                 className="w-[100%]"
               />
             </div>
-            <div id="gloves" className="border-2 rounded-md mb-2 w-[100%]">
+            <div
+              id="gloves"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Gloves.imageURL !== ""
@@ -177,7 +197,10 @@ export const Profile: FC = () => {
             </div>
           </div>
           <div className="flex flex-col h-[100%] w-[25%] justify-center">
-            <div id="helmet" className="border rounded-md mb-2 w-[100%]">
+            <div
+              id="helmet"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Helmet.imageURL !== ""
@@ -188,7 +211,10 @@ export const Profile: FC = () => {
                 className="w-[100%]"
               />
             </div>
-            <div id="chestplate" className="border-2 rounded-md mb-2 w-[100%]">
+            <div
+              id="chestplate"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Chestplate.imageURL !== ""
@@ -199,7 +225,10 @@ export const Profile: FC = () => {
                 className="w-[100%]"
               />
             </div>
-            <div id="boots" className="border-2 rounded-md mb-2 w-[100%]">
+            <div
+              id="boots"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Boots.imageURL !== ""
@@ -212,7 +241,10 @@ export const Profile: FC = () => {
             </div>
           </div>
           <div className="flex flex-col  h-[100%] w-[25%] justify-center">
-            <div id="amulet" className="border-2 rounded-md mb-2 w-[60%]">
+            <div
+              id="amulet"
+              className="border rounded-md mb-2 w-[60%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Amulet.imageURL !== ""
@@ -223,7 +255,10 @@ export const Profile: FC = () => {
                 className="w-[100%]"
               />
             </div>
-            <div id="shield" className="border rounded-md mb-2 w-[100%]">
+            <div
+              id="shield"
+              className="border rounded-md mb-2 w-[100%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Shield.imageURL !== ""
@@ -234,7 +269,10 @@ export const Profile: FC = () => {
                 className="w-[100%]"
               />
             </div>
-            <div id="ring" className="border rounded-md mb-2 w-[60%]">
+            <div
+              id="ring"
+              className="border rounded-md mb-2 w-[60%] border-blue-300"
+            >
               <img
                 src={
                   user.items.Ring.imageURL !== ""
@@ -258,7 +296,10 @@ export const Profile: FC = () => {
             </div>
           </div>
         </div>
-        <div id="inventory" className="flex h-[25%] w-full border-2 flex-col">
+        <div
+          id="inventory"
+          className="flex h-[25%] w-full border flex-col border-blue-300"
+        >
           {[...Array(3)].map((_, groupIndex) => (
             <div key={groupIndex} className="flex w-full h-[33.33%]">
               {[...Array(5)].map((_, slotIndex) => {
@@ -270,7 +311,10 @@ export const Profile: FC = () => {
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
 
                 return (
-                  <div key={itemKey} className="border-2 rounded-md w-[100%]">
+                  <div
+                    key={itemKey}
+                    className="border rounded-md w-[100%] border-blue-300"
+                  >
                     <img src={imageUrl} alt="" className="h-[100%] w-[100%]" />
                   </div>
                 );

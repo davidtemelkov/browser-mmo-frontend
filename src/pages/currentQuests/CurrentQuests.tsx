@@ -22,10 +22,10 @@ export const CurrentQuests: FC = () => {
   }, [questsGenerated]);
 
   return (
-    <div className="flex w-[100%] h-[100%] justify-center items-center gap-2 bg-blue-200">
-      <div className="flex flex-col w-[33%] h-[100%] justify-center items-center">
+    <div className="flex w-[100%] h-[100%] bg-blue-200 text-blue-500">
+      <div className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform">
         <img
-          className="w-[90%] h-[40%]"
+          className="w-[90%] h-[40%] rounded-md "
           src={user.currentQuests.Quest0.ImageURL}
           alt={user.currentQuests.Quest0.Name}
         />
@@ -39,9 +39,9 @@ export const CurrentQuests: FC = () => {
           Gold {user.currentQuests.Quest0.Gold}
         </p>
       </div>
-      <div className="flex flex-col w-[33%] h-[100%] justify-center items-center">
+      <div className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] border border-blue-300 hover:bg-blue-300 hover:scale-105 transition-transform">
         <img
-          className="w-[90%] h-[40%]"
+          className="w-[90%] h-[40%] rounded-md"
           src={user.currentQuests.Quest1.ImageURL}
           alt={user.currentQuests.Quest1.Name}
         />
@@ -55,9 +55,9 @@ export const CurrentQuests: FC = () => {
           Gold {user.currentQuests.Quest1.Gold}
         </p>
       </div>
-      <div className="flex flex-col w-[33%] h-[100%] justify-center items-center">
+      <div className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform">
         <img
-          className="w-[90%] h-[40%]"
+          className="w-[90%] h-[40%] rounded-md"
           src={user.currentQuests.Quest2.ImageURL}
           alt={user.currentQuests.Quest2.Name}
         />
