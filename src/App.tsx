@@ -5,7 +5,7 @@ import { Profile } from "./pages/profile";
 import { Layout } from "./components/layout";
 import { Quests } from "./pages/quests";
 import { UserProvider } from "./contexts/userContext";
-import { Work } from "./pages/work/Work";
+import { Work } from "./pages/work";
 
 function App() {
   return (

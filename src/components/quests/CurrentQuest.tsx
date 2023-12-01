@@ -4,9 +4,15 @@ import { cancelCurrentQuest } from "../../services/questService";
 
 interface CurrentQuestProps {
   user: IFetchedUser;
+  rerender: boolean;
+  setRerender: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CurrentQuest: FC<CurrentQuestProps> = ({ user }) => {
+export const CurrentQuest: FC<CurrentQuestProps> = ({
+  user,
+  rerender,
+  setRerender,
+}) => {
   const backgroundImageStyle = {
     backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
     backgroundSize: "cover",
@@ -35,6 +41,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({ user }) => {
             className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
             onClick={async () => {
               await cancelCurrentQuest();
+              setRerender(!rerender);
             }}
           >
             Cancel
