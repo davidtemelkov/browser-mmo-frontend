@@ -35,7 +35,7 @@ export interface IFetchedUser{
     mountImageURL: string;
     isQuesting: boolean,
     isWorking: boolean,
-    currentQuests: Record<string, IQuest>;
+    quests: Record<string, IQuest>;
 }
 
 export interface IQuest{
@@ -132,7 +132,7 @@ export const initalUser : IFetchedUser = {
   mountImageURL: "",
   isQuesting: false,
   isWorking: false,
-  currentQuests: {
+  quests: {
     "Quest0": { ...initialQuest },
     "Quest1": { ...initialQuest },
     "Quest2": { ...initialQuest },

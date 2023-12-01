@@ -74,36 +74,40 @@ export const Profile: FC = () => {
     <div className="flex h-[100%] bg-blue-200 text-blue-600">
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
-        <div className="flex rounded-md w-full h-[30%]">
+        <div className="flex rounded-md w-full h-[25%]">
           <img
             src={user?.imageURL}
             alt={user?.name}
             className="w-[50%] rounded-md"
           />
-          <div className="ml-5 h-[100%] w-full flex flex-col justify-around">
-            <div className="flex items-baseline gap-5">
-              <div className="font-semibold text-[135%]">Name</div>
-              <div className="font-semibold text-[120%]">{user?.name}</div>
+          <div className="ml-5 h-[100%] w-full flex flex-col">
+            <div className="flex items-baseline gap-11">
+              <div className="font-semibold text-[125%]">Name</div>
+              <div className="font-semibold text-[110%]">{user?.name}</div>
             </div>
-            <div className="flex items-baseline gap-5">
-              <div className="font-semibold text-[135%]">Level</div>
-              <div className="font-semibold text-[120%]">{user?.level}</div>
+            <div className="flex items-baseline gap-12">
+              <div className="font-semibold text-[125%]">Level</div>
+              <div className="font-semibold text-[110%]">{user?.level}</div>
             </div>
-            <div className="flex items-baseline gap-5">
-              <div className="font-semibold text-[135%]">Experience</div>
-              <div className="font-semibold text-[120%]">{user?.EXP}</div>
+            <div className="flex items-baseline gap-3">
+              <div className="font-semibold text-[125%]">Experience</div>
+              <div className="font-semibold text-[110%]">{user?.EXP}/0</div>
             </div>
-            <div className="flex items-baseline gap-5">
-              <div className="font-semibold text-[135%]">Big D Points</div>
-              <div className="font-semibold text-[120%]">
+            <div className="flex items-baseline gap-3">
+              <div className="font-semibold text-[125%]">BigDPoints</div>
+              <div className="font-semibold text-[110%]">
                 {user?.bigDPoints}
               </div>
+            </div>
+            <div className="flex items-baseline gap-5">
+              <div className="font-semibold text-[125%]">Ranking</div>
+              <div className="font-semibold text-[110%]">1</div>
             </div>
           </div>
         </div>
 
-        <div className="h-[70%]">
-          <div className="rounded-md p-3 mb-3 h-[25%]">
+        <div className="h-[75%]">
+          <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Strength</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.strength}</p>
@@ -119,7 +123,7 @@ export const Profile: FC = () => {
               user.strength / 2
             )}/${user.strength}`}</p>
           </div>
-          <div className="rounded-md p-3 mb-3 h-[25%]">
+          <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.dexterity}</p>
@@ -134,7 +138,7 @@ export const Profile: FC = () => {
               2
             )}%`}</p>
           </div>
-          <div className="rounded-md p-3 mb-3 h-[25%]">
+          <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Constitution</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.constitution}</p>
@@ -147,7 +151,7 @@ export const Profile: FC = () => {
             </div>
             <p className="ml-[45%]">{`Life: ${100 + user.constitution}`}</p>
           </div>
-          <div className="rounded-md p-3 mb-3 h-[25%]">
+          <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Intelligence</p>
             <div className="flex justify-end items-center">
               <p className="text-l font-semibold">{user?.intelligence}</p>

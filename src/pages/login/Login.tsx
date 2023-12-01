@@ -1,12 +1,18 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IValueLogin, login } from "../../services/userService";
 import { Link, useNavigate } from "react-router-dom";
 import { ITokenPayload, decodeToken } from "../../utils/jwt";
-import { saveToStorage } from "../../utils/localStorage";
+import { getUserFromStorage, saveToStorage } from "../../utils/localStorage";
 
 export const Login: FC = () => {
   const [values, setValue] = useState<IValueLogin>({ email: "", password: "" });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (getUserFromStorage()) {
+      navigate(`/profile`);
+    }
+  }, []);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue((state) => ({ ...state, [e.target.name]: e.target.value }));
