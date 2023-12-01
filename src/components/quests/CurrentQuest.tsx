@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IFetchedUser } from "../../services/userService";
+import { cancelCurrentQuest } from "../../services/questService";
 
 interface CurrentQuestProps {
   user: IFetchedUser;
@@ -32,7 +33,9 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({ user }) => {
           </div>
           <button
             className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
-            onClick={() => {}}
+            onClick={async () => {
+              await cancelCurrentQuest();
+            }}
           >
             Cancel
           </button>

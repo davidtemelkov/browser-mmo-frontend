@@ -39,3 +39,21 @@ export const generateQuests = async () => {
 
     return response.status;
   };
+  
+  export const cancelCurrentQuest = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/cancel`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+
+    return response.status;
+  };
