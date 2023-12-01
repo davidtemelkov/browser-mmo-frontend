@@ -36,6 +36,7 @@ export interface IFetchedUser{
     isQuesting: boolean,
     isWorking: boolean,
     quests: Record<string, IQuest>;
+    currentQuest: Record<string, IQuest>;
 }
 
 export interface IQuest{
@@ -136,6 +137,9 @@ export const initalUser : IFetchedUser = {
     "Quest0": { ...initialQuest },
     "Quest1": { ...initialQuest },
     "Quest2": { ...initialQuest },
+  },
+  currentQuest: {
+    "CurrentQuest": { ...initialQuest },
   },
 }
 
