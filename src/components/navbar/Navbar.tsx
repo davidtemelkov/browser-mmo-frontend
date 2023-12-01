@@ -17,11 +17,11 @@ export const Navbar: FC = () => {
 
   return (
     <nav className="h-[100%]">
-      <div className="absolute top-[4%] ml-[2.7%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-[200%] text-white font-serif font-bold">
+      <div className="absolute top-[4%] ml-[2.7%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-[180%] font-bold">
         TanothStory
       </div>
       {getUserFromStorage() && (
-        <ul className="flex justify-between items-center h-[100%] text-blue-600 text-lg font-semibold">
+        <ul className="flex justify-between items-center h-[100%] text-lg font-semibold">
           <li className="border border-blue-300 rounded-md p-1 text-center bg-blue-200 ml-[13.3%]">
             <div>Gold {gold}</div>
           </li>

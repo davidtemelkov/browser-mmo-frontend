@@ -71,7 +71,7 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex h-[100%] bg-blue-200 text-blue-600">
+    <div className="flex h-[100%] bg-blue-200">
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
         <div className="flex rounded-md w-full h-[25%]">

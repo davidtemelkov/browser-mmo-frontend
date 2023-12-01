@@ -1,3 +1,8 @@
+body{
+    font-family: "Press Start 2P", sans-serif;
+    /* color: #96a18f; */
+}
+
 /* grid container */
 .holy-grail-grid {
     display:grid;
@@ -8,6 +13,30 @@
         'right-sidebar'
         'footer';
 }
+
+/* .holy-grail-grid {
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+} 
+
+button {
+ text-shadow:
+     0.05em 0 black,
+     0 0.05em black,
+     -0.05em 0 black,
+     0 -0.05em black,
+     -0.05em -0.05em black,
+     -0.05em 0.05em black,
+     0.05em -0.05em black,
+     0.05em 0.05em black;
+} */
 
 /* general column padding */
 /* .holy-grail-grid > * {

@@ -19,7 +19,7 @@ export const QuestsComponent: FC<QuestsProps> = ({
   };
 
   return (
-    <div className="flex w-[100%] h-[100%] bg-blue-200 text-blue-500">
+    <div className="flex w-[100%] h-[100%] bg-blue-200">
       <div
         className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform"
         onClick={() => handleQuestClick(user.quests.Quest0)}
