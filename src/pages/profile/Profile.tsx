@@ -75,33 +75,45 @@ export const Profile: FC = () => {
       {/* Left Section - Info and stats */}
       <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
         <div className="flex rounded-md w-full h-[25%]">
-          <img
-            src={user?.imageURL}
-            alt={user?.name}
-            className="w-[50%] rounded-md"
-          />
-          <div className="ml-5 h-[100%] w-full flex flex-col">
-            <div className="flex items-baseline gap-11">
-              <div className="font-semibold text-[125%]">Name</div>
-              <div className="font-semibold text-[110%]">{user?.name}</div>
-            </div>
-            <div className="flex items-baseline gap-12">
-              <div className="font-semibold text-[125%]">Level</div>
-              <div className="font-semibold text-[110%]">{user?.level}</div>
-            </div>
-            <div className="flex items-baseline gap-3">
-              <div className="font-semibold text-[125%]">Experience</div>
-              <div className="font-semibold text-[110%]">{user?.EXP}/0</div>
-            </div>
-            <div className="flex items-baseline gap-3">
-              <div className="font-semibold text-[125%]">BigDPoints</div>
-              <div className="font-semibold text-[110%]">
-                {user?.bigDPoints}
-              </div>
-            </div>
-            <div className="flex items-baseline gap-5">
-              <div className="font-semibold text-[125%]">Ranking</div>
-              <div className="font-semibold text-[110%]">1</div>
+          <div className="w-[27%]">
+            <img
+              src={user?.imageURL}
+              alt={user?.name}
+              className="w-full rounded-md"
+            />
+          </div>
+          <div className="flex">
+            <div className="ml-5 h-[100%] w-full flex flex-col">
+              <table className="w-full table">
+                <tr className=" table-row items-baseline  space-x-4">
+                  <td className="font-semibold text-[125%]">Name</td>
+                  <td className="font-semibold text-[110%] pl-9">
+                    {user?.name}
+                  </td>
+                </tr>
+                <tr className="table-row items-baseline  space-x-4">
+                  <td className="font-semibold text-[125%]">Level</td>
+                  <td className="font-semibold text-[110%] pl-9">
+                    {user?.level}
+                  </td>
+                </tr>
+                <tr className="table-row items-baseline  space-x-4">
+                  <td className="font-semibold text-[125%]">Experience</td>
+                  <td className="font-semibold text-[110%] pl-9">
+                    {user?.EXP}/0
+                  </td>
+                </tr>
+                <tr className="table-row items-baseline  space-x-4">
+                  <td className="font-semibold text-[125%]">BigDPoints</td>
+                  <td className="font-semibold text-[110%] pl-9">
+                    {user?.bigDPoints}
+                  </td>
+                </tr>
+                <tr className="table-row items-baseline  space-x-4">
+                  <td className="font-semibold text-[125%]">Ranking</td>
+                  <td className="font-semibold text-[110%] pl-9">1</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
