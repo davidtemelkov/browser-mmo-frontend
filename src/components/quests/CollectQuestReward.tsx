@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { IFetchedUser } from "../../services/userService";
 import { collectCurrentQuestRewards } from "../../services/questService";
 
@@ -17,6 +17,12 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
     backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
     backgroundSize: "cover",
   };
+
+  useEffect(() => {
+    (async () => {
+      await collectCurrentQuestRewards();
+    })();
+  }, []);
 
   return (
     <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
@@ -37,8 +43,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
           </p>
           <button
             className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
-            onClick={async () => {
-              await collectCurrentQuestRewards();
+            onClick={() => {
               setRerender(!rerender);
             }}
           >
