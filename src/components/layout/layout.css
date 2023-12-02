@@ -1,6 +1,6 @@
 body{
     font-family: "Press Start 2P", sans-serif;
-    /* color: #96a18f; */
+     color: whitesmoke; 
 }
 
 /* grid container */
@@ -14,7 +14,7 @@ body{
         'footer';
 }
 
-/* .holy-grail-grid {
+.holy-grail-grid {
     text-shadow:
         0.05em 0 black,
         0 0.05em black,
@@ -36,7 +36,7 @@ button {
      -0.05em 0.05em black,
      0.05em -0.05em black,
      0.05em 0.05em black;
-} */
+}
 
 /* general column padding */
 /* .holy-grail-grid > * {

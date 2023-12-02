@@ -32,6 +32,9 @@ export const QuestsComponent: FC<QuestsProps> = ({
         <p className="text-xl font-semibold">{user.quests.Quest0.Name}</p>
         <p className="text-xl font-semibold">EXP {user.quests.Quest0.EXP}</p>
         <p className="text-xl font-semibold">Gold {user.quests.Quest0.Gold}</p>
+        <p className="text-xl font-semibold">
+          Duration {user.quests.Quest0.Time}
+        </p>
       </div>
       <div
         className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] border border-blue-300 hover:bg-blue-300 hover:scale-105 transition-transform"
@@ -45,6 +48,9 @@ export const QuestsComponent: FC<QuestsProps> = ({
         <p className="text-xl font-semibold">{user.quests.Quest1.Name}</p>
         <p className="text-xl font-semibold">EXP {user.quests.Quest1.EXP}</p>
         <p className="text-xl font-semibold">Gold {user.quests.Quest1.Gold}</p>
+        <p className="text-xl font-semibold">
+          Duration {user.quests.Quest1.Time}
+        </p>
       </div>
       <div
         className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform"
@@ -58,6 +64,9 @@ export const QuestsComponent: FC<QuestsProps> = ({
         <p className="text-xl font-semibold">{user.quests.Quest2.Name}</p>
         <p className="text-xl font-semibold">EXP {user.quests.Quest2.EXP}</p>
         <p className="text-xl font-semibold">Gold {user.quests.Quest2.Gold}</p>
+        <p className="text-xl font-semibold">
+          Duration {user.quests.Quest2.Time}
+        </p>
       </div>
     </div>
   );

@@ -2,7 +2,11 @@ import { FC, useEffect, useState } from "react";
 import { IFetchedUser, getUser, initalUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { generateQuests } from "../../services/questService";
-import { CurrentQuest, QuestsComponent } from "../../components/quests";
+import {
+  CollectQuestReward,
+  CurrentQuest,
+  QuestsComponent,
+} from "../../components/quests";
 
 export const Quests: FC = () => {
   const [user, setUser] = useState<IFetchedUser>(initalUser);
@@ -21,6 +25,17 @@ export const Quests: FC = () => {
 
     fetchData();
   }, [rerender]);
+
+  const isQuestExpired = new Date(user.questingUntil).getTime() <= Date.now();
+  if (isQuestExpired) {
+    return (
+      <CollectQuestReward
+        user={user}
+        rerender={rerender}
+        setRerender={setRerender}
+      />
+    );
+  }
 
   if (user.isQuesting) {
     return (

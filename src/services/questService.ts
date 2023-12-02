@@ -57,3 +57,21 @@ export const generateQuests = async () => {
 
     return response.status;
   };
+
+  export const collectCurrentQuestRewards = async () => {
+    const jwt = getUserFromStorage()!.token;
+    
+    if (!jwt) {
+      return;
+    }
+  
+    const response = await fetch(`${baseUrl}/collect`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${jwt}`
+      },
+    });
+
+    return response.status;
+  };
