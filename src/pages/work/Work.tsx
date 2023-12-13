@@ -27,13 +27,14 @@ export const Work: FC = () => {
   }
 
   const isWorkExpired = new Date(user.workingUntil).getTime() <= Date.now();
-
   if (isWorkExpired) {
-    <CollectWorkRewards
-      user={user}
-      rerender={rerender}
-      setRerender={setRerender}
-    />;
+    return (
+      <CollectWorkRewards
+        user={user}
+        rerender={rerender}
+        setRerender={setRerender}
+      />
+    );
   }
 
   if (user.isWorking) {

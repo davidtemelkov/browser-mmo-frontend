@@ -13,6 +13,10 @@ export const WorkComponent: FC<WorkComponentProps> = ({
   rerender,
   setRerender,
 }) => {
+  const backgroundImageStyle = {
+    backgroundImage: `url(https://i.pinimg.com/originals/8f/e4/72/8fe47283864b4bbeba9c21b20964f38b.jpg)`,
+    backgroundSize: "cover",
+  };
   const [selectedHours, setSelectedHours] = useState<number>(1);
 
   const handleHourChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +36,10 @@ export const WorkComponent: FC<WorkComponentProps> = ({
   };
 
   return (
-    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
+    <div
+      className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200"
+      style={backgroundImageStyle}
+    >
       <div className="justify-start mt-[5%]">
         <h1 className="text-[2rem] font-semibold ">Work</h1>
       </div>
@@ -60,7 +67,7 @@ export const WorkComponent: FC<WorkComponentProps> = ({
             onChange={handleHourChange}
             className="w-full h-full rounded-md bg-gray-700 appearance-none"
             style={{
-              background: `linear-gradient(to right, #333 0%, #333 ${
+              background: `linear-gradient(to right, #FFF 0%, #FFF ${
                 selectedHours * (100 / 12)
               }%, transparent ${selectedHours}%, transparent 100%)`,
             }}
