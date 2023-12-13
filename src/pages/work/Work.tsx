@@ -1,64 +1,41 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { IFetchedUser, getUser, initalUser } from "../../services/userService";
+import { getEmailFromStorage } from "../../utils/localStorage";
+import {
+  CollectWorkRewards,
+  CurrentWork,
+  WorkComponent,
+} from "../../components/work";
 
 export const Work: FC = () => {
-  const [selectedHours, setSelectedHours] = useState<number>(1);
+  const [user, setUser] = useState<IFetchedUser>(initalUser);
+  const [rerender, setRerender] = useState<boolean>(false);
 
-  const handleHourChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedValue = parseInt(event.target.value, 10);
-    setSelectedHours(selectedValue);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedUser = await getUser(getEmailFromStorage()!);
+      setUser(fetchedUser!);
+    };
 
-  const handleOkayClick = () => {};
+    fetchData();
+  }, [rerender]);
+
+  const isWorkExpired = new Date(user.workingUntil).getTime() <= Date.now();
+  if (isWorkExpired) {
+    <CollectWorkRewards
+      user={user}
+      rerender={rerender}
+      setRerender={setRerender}
+    />;
+  }
+
+  if (user.isWorking) {
+    return (
+      <CurrentWork user={user} rerender={rerender} setRerender={setRerender} />
+    );
+  }
 
   return (
-    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
-      <div className="justify-start mt-[5%]">
-        <h1 className="text-[2rem] font-semibold ">Work</h1>
-      </div>
-
-      <div className="flex flex-col items-center justify-end mb-[3%] w-full">
-        <p className="text-[1.25rem] font-semibold mb-[3%]">{`${selectedHours} hours selected`}</p>
-        <div className="relative w-[75%] border-2 border-black rounded-lg h-8">
-          {[...Array(12).keys()].map((hour) => (
-            <div
-              key={hour + 1}
-              className="absolute h-full border-l border-gray-500"
-              style={{
-                left: `${(hour + 1) * (100 / 12)}%`,
-              }}
-            ></div>
-          ))}
-          <input
-            type="range"
-            min="1"
-            max="12"
-            value={selectedHours}
-            onChange={handleHourChange}
-            className="w-full h-full rounded-md bg-gray-700 appearance-none"
-            style={{
-              background: `linear-gradient(to right, #333 0%, #333 ${
-                selectedHours * (100 / 12)
-              }%, transparent ${selectedHours}%, transparent 100%)`,
-            }}
-          />
-        </div>
-        <style>
-          {`
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 0;  // Set width to 0 to hide the thumb
-      }
-    `}
-        </style>
-
-        <button
-          className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%]"
-          onClick={handleOkayClick}
-        >
-          Okay
-        </button>
-      </div>
-    </div>
+    <WorkComponent user={user} rerender={rerender} setRerender={setRerender} />
   );
 };

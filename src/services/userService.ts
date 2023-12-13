@@ -38,6 +38,9 @@ export interface IFetchedUser{
     quests: Record<string, IQuest>;
     currentQuest: Record<string, IQuest>;
     questingUntil: string;
+    workingUntil: string;
+    workReward: number;
+    workDuration: number;
 }
 
 export interface IQuest{
@@ -46,6 +49,11 @@ export interface IQuest{
   Time: string;
   EXP: string;
   Gold: string;
+}
+
+export interface IWork{
+  Hours: number;
+  Reward: number;
 }
 
 export const initialQuest: IQuest = {
@@ -142,7 +150,10 @@ export const initalUser : IFetchedUser = {
   currentQuest: {
     "CurrentQuest": { ...initialQuest },
   },
-  questingUntil: ""
+  questingUntil: "",
+  workingUntil: "",
+  workReward: 0,
+  workDuration: 0
 }
 
 export interface IItem{
