@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { IFetchedUser, getUser, initalUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
+import { useNavigate } from "react-router-dom";
 import {
   CollectWorkRewards,
   CurrentWork,
@@ -10,6 +11,7 @@ import {
 export const Work: FC = () => {
   const [user, setUser] = useState<IFetchedUser>(initalUser);
   const [rerender, setRerender] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,12 @@ export const Work: FC = () => {
     fetchData();
   }, [rerender]);
 
+  if (user.isQuesting) {
+    navigate("/quests");
+  }
+
   const isWorkExpired = new Date(user.workingUntil).getTime() <= Date.now();
+
   if (isWorkExpired) {
     <CollectWorkRewards
       user={user}

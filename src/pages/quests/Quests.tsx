@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IFetchedUser, getUser, initalUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { generateQuests } from "../../services/questService";
@@ -11,6 +12,7 @@ import {
 export const Quests: FC = () => {
   const [user, setUser] = useState<IFetchedUser>(initalUser);
   const [rerender, setRerender] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +27,10 @@ export const Quests: FC = () => {
 
     fetchData();
   }, [rerender]);
+
+  if (user.isWorking) {
+    navigate("/work");
+  }
 
   const isQuestExpired = new Date(user.questingUntil).getTime() <= Date.now();
   if (isQuestExpired) {
