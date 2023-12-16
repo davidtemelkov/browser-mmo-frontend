@@ -18,11 +18,19 @@ export const QuestsComponent: FC<QuestsProps> = ({
     setRerender(!rerender);
   };
 
+  const isDailyQuestCountExceeded = user.dailyQuestCount >= 10;
+
   return (
     <div className="flex w-[100%] h-[100%] bg-blue-200">
       <div
-        className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform"
-        onClick={() => handleQuestClick(user.quests.Quest0)}
+        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] ${
+          isDailyQuestCountExceeded
+            ? "bg-gray-400"
+            : "hover:bg-blue-300 hover:scale-105 transition-transform"
+        }`}
+        onClick={() =>
+          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest0)
+        }
       >
         <img
           className="w-[90%] h-[40%] rounded-md "
@@ -37,8 +45,14 @@ export const QuestsComponent: FC<QuestsProps> = ({
         </p>
       </div>
       <div
-        className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] border border-blue-300 hover:bg-blue-300 hover:scale-105 transition-transform"
-        onClick={() => handleQuestClick(user.quests.Quest1)}
+        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] border border-blue-300 ${
+          isDailyQuestCountExceeded
+            ? "bg-gray-400"
+            : "hover:bg-blue-300 hover:scale-105 transition-transform"
+        }`}
+        onClick={() =>
+          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest1)
+        }
       >
         <img
           className="w-[90%] h-[40%] rounded-md"
@@ -51,10 +65,17 @@ export const QuestsComponent: FC<QuestsProps> = ({
         <p className="text-xl font-semibold">
           Duration {user.quests.Quest1.Time}
         </p>
+        <div className="mt-[40%] text-lg">{user.dailyQuestCount}/10</div>
       </div>
       <div
-        className="flex flex-col w-[33%] h-[100%] items-center pt-[5%] hover:bg-blue-300 hover:scale-105 transition-transform"
-        onClick={() => handleQuestClick(user.quests.Quest2)}
+        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] ${
+          isDailyQuestCountExceeded
+            ? "bg-gray-400"
+            : "hover:bg-blue-300 hover:scale-105 transition-transform"
+        }`}
+        onClick={() =>
+          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest2)
+        }
       >
         <img
           className="w-[90%] h-[40%] rounded-md"

@@ -41,6 +41,8 @@ export interface IFetchedUser{
     workingUntil: string;
     workReward: number;
     workDuration: number;
+    lastPlayedDate: string;
+    dailyQuestCount: number;
 }
 
 export interface IQuest{
@@ -153,7 +155,9 @@ export const initalUser : IFetchedUser = {
   questingUntil: "",
   workingUntil: "",
   workReward: 0,
-  workDuration: 0
+  workDuration: 0,
+  lastPlayedDate: "",
+  dailyQuestCount: 0
 }
 
 export interface IItem{

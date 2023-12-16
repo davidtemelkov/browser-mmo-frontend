@@ -2,12 +2,13 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IFetchedUser, getUser, initalUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
-import { generateQuests } from "../../services/questService";
+import { generateQuests, resetQuests } from "../../services/questService";
 import {
   CollectQuestReward,
   CurrentQuest,
   QuestsComponent,
 } from "../../components/quests";
+import { getCurrentDate } from "../../utils/date";
 
 export const Quests: FC = () => {
   const [user, setUser] = useState<IFetchedUser>(initalUser);
@@ -20,6 +21,12 @@ export const Quests: FC = () => {
       setUser(fetchedUser!);
 
       if (fetchedUser!.quests.Quest0.ImageURL === "") {
+        await generateQuests();
+        setRerender(!rerender);
+      }
+
+      if (fetchedUser!.lastPlayedDate !== getCurrentDate()) {
+        await resetQuests();
         await generateQuests();
         setRerender(!rerender);
       }
