@@ -23,7 +23,7 @@ export const QuestsComponent: FC<QuestsProps> = ({
   return (
     <div className="flex w-[100%] h-[100%] bg-blue-200">
       <div
-        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] ${
+        className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] ${
           isDailyQuestCountExceeded
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
@@ -45,7 +45,7 @@ export const QuestsComponent: FC<QuestsProps> = ({
         </p>
       </div>
       <div
-        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] border border-blue-300 ${
+        className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] border-l border-r border-blue-300 ${
           isDailyQuestCountExceeded
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
@@ -68,7 +68,7 @@ export const QuestsComponent: FC<QuestsProps> = ({
         <div className="mt-[40%] text-lg">{user.dailyQuestCount}/10</div>
       </div>
       <div
-        className={`flex flex-col w-[33%] h-[100%] items-center pt-[5%] ${
+        className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] ${
           isDailyQuestCountExceeded
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
