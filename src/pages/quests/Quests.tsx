@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IFetchedUser, getUser, initalUser } from "../../services/userService";
+import { getUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { generateQuests, resetQuests } from "../../services/questService";
 import {
@@ -9,9 +9,10 @@ import {
   QuestsComponent,
 } from "../../components/quests";
 import { getCurrentDate } from "../../utils/date";
+import { useUser } from "../../contexts/userContext";
 
 export const Quests: FC = () => {
-  const [user, setUser] = useState<IFetchedUser>(initalUser);
+  const { user, setUser } = useUser();
   const [rerender, setRerender] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -44,6 +45,7 @@ export const Quests: FC = () => {
     return (
       <CollectQuestReward
         user={user}
+        setUser={setUser}
         rerender={rerender}
         setRerender={setRerender}
       />

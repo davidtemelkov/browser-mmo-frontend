@@ -4,12 +4,14 @@ import { collectCurrentQuestRewards } from "../../services/questService";
 
 interface CollectQuestRewardProps {
   user: IFetchedUser;
+  setUser: React.Dispatch<React.SetStateAction<IFetchedUser>>;
   rerender: boolean;
   setRerender: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   user,
+  setUser,
   rerender,
   setRerender,
 }) => {
@@ -19,9 +21,16 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   };
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       await collectCurrentQuestRewards();
-    })();
+    };
+
+    setUser((prevUser) => ({
+      ...prevUser,
+      gold: prevUser.gold + +prevUser.currentQuest.CurrentQuest.Gold,
+    }));
+
+    fetchData();
   }, []);
 
   return (

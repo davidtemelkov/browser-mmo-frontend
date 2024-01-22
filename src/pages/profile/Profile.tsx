@@ -22,6 +22,7 @@ export const Profile: FC = () => {
     fetchData();
   }, []);
 
+  //TODO: use the response to change the gold
   const increaseStrength = async () => {
     const resp = await upgradeStrength();
 

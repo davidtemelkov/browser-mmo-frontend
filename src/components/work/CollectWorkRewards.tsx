@@ -4,12 +4,14 @@ import { collectWorkRewards } from "../../services/workService";
 
 interface CollectWorkRewardsProps {
   user: IFetchedUser;
+  setUser: React.Dispatch<React.SetStateAction<IFetchedUser>>;
   rerender: boolean;
   setRerender: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CollectWorkRewards: FC<CollectWorkRewardsProps> = ({
   user,
+  setUser,
   rerender,
   setRerender,
 }) => {
@@ -19,9 +21,16 @@ export const CollectWorkRewards: FC<CollectWorkRewardsProps> = ({
   };
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       await collectWorkRewards();
-    })();
+    };
+
+    setUser((prevUser) => ({
+      ...prevUser,
+      gold: prevUser.gold + +prevUser.currentQuest.CurrentQuest.Gold,
+    }));
+
+    fetchData();
   }, []);
 
   return (

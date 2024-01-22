@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { IFetchedUser, getUser, initalUser } from "../../services/userService";
+import { getUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,9 +7,10 @@ import {
   CurrentWork,
   WorkComponent,
 } from "../../components/work";
+import { useUser } from "../../contexts/userContext";
 
 export const Work: FC = () => {
-  const [user, setUser] = useState<IFetchedUser>(initalUser);
+  const { user, setUser } = useUser();
   const [rerender, setRerender] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ export const Work: FC = () => {
     return (
       <CollectWorkRewards
         user={user}
+        setUser={setUser}
         rerender={rerender}
         setRerender={setRerender}
       />
