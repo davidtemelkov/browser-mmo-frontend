@@ -18,19 +18,17 @@ export const QuestsComponent: FC<QuestsProps> = ({
     setRerender(!rerender);
   };
 
-  const isDailyQuestCountExceeded = user.dailyQuestCount >= 10;
+  const isAvailable = user.dailyQuestCount >= 10 || user.isWorking;
 
   return (
     <div className="flex w-[100%] h-[100%] bg-blue-200">
       <div
         className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] ${
-          isDailyQuestCountExceeded
+          isAvailable
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
         }`}
-        onClick={() =>
-          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest0)
-        }
+        onClick={() => !isAvailable && handleQuestClick(user.quests.Quest0)}
       >
         <img
           className="w-[90%] h-[40%] rounded-md "
@@ -46,13 +44,11 @@ export const QuestsComponent: FC<QuestsProps> = ({
       </div>
       <div
         className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] border-l border-r border-blue-300 ${
-          isDailyQuestCountExceeded
+          isAvailable
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
         }`}
-        onClick={() =>
-          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest1)
-        }
+        onClick={() => !isAvailable && handleQuestClick(user.quests.Quest1)}
       >
         <img
           className="w-[90%] h-[40%] rounded-md"
@@ -69,13 +65,11 @@ export const QuestsComponent: FC<QuestsProps> = ({
       </div>
       <div
         className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] ${
-          isDailyQuestCountExceeded
+          isAvailable
             ? "bg-gray-400"
             : "hover:bg-blue-300 hover:scale-105 transition-transform"
         }`}
-        onClick={() =>
-          !isDailyQuestCountExceeded && handleQuestClick(user.quests.Quest2)
-        }
+        onClick={() => !isAvailable && handleQuestClick(user.quests.Quest2)}
       >
         <img
           className="w-[90%] h-[40%] rounded-md"

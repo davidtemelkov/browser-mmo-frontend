@@ -36,10 +36,6 @@ export const Quests: FC = () => {
     fetchData();
   }, [rerender]);
 
-  if (user.isWorking) {
-    navigate("/work");
-  }
-
   const isQuestExpired = new Date(user.questingUntil).getTime() <= Date.now();
   if (isQuestExpired) {
     return (

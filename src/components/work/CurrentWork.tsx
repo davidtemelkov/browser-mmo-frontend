@@ -19,6 +19,7 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
   };
 
   const [remainingTime, setRemainingTime] = useState<number | null>(null);
+  const [isLoading, SetIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const workingUnitlTime = new Date(user.workingUntil).getTime();
@@ -38,6 +39,8 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
         clearInterval(interval); // Stop the interval after reaching 00:00
         setRerender(true);
       }
+
+      SetIsLoading(false);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -75,28 +78,43 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
           <h1 className="text-[2rem] font-semibold ">Working</h1>
         </div>
 
-        <div className="flex flex-col items-center justify-end mb-[3%] w-full">
-          <p className="text-[1.25rem] font-semibold mb-[3%]">
-            {remainingTime !== null
-              ? formatTime(remainingTime) + " remaining"
-              : ""}
-          </p>
-          <div className="w-[75%] h-6 rounded-md dark:bg-gray-700 relative">
-            <div
-              className="h-6 rounded-md dark:bg-blue-500 absolute left-0"
-              style={progressBarStyle}
-            ></div>
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-end mb-[3%] w-full">
+            <p className="text-[1.25rem] font-semibold mb-[3%]">Calculating</p>
+            <button
+              className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
+              onClick={async () => {
+                await cancelWork();
+                setRerender(!rerender);
+              }}
+            >
+              Cancel
+            </button>
           </div>
-          <button
-            className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
-            onClick={async () => {
-              await cancelWork();
-              setRerender(!rerender);
-            }}
-          >
-            Cancel
-          </button>
-        </div>
+        ) : (
+          <div className="flex flex-col items-center justify-end mb-[3%] w-full">
+            <p className="text-[1.25rem] font-semibold mb-[3%]">
+              {remainingTime !== null
+                ? formatTime(remainingTime) + " remaining"
+                : ""}
+            </p>
+            <div className="w-[75%] h-6 rounded-md dark:bg-gray-700 relative">
+              <div
+                className="h-6 rounded-md dark:bg-blue-500 absolute left-0"
+                style={progressBarStyle}
+              ></div>
+            </div>
+            <button
+              className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
+              onClick={async () => {
+                await cancelWork();
+                setRerender(!rerender);
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
