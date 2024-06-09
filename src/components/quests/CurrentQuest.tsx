@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { IFetchedUser } from "../../services/userService";
 import { cancelCurrentQuest } from "../../services/questService";
 
@@ -21,7 +21,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
   const [remainingTime, setRemainingTime] = useState<number | null>(null);
   const [isLoading, SetIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
+  useMemo(() => {
     const questingUntilTime = new Date(user.questingUntil).getTime();
     const currentTime = new Date().getTime();
     const timeDifference = questingUntilTime - currentTime;

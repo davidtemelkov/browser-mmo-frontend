@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { IFetchedUser } from "../../services/userService";
 import { collectCurrentQuestRewards } from "../../services/questService";
 
@@ -15,6 +15,8 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   rerender,
   setRerender,
 }) => {
+  const [fightLog, setFightLog] = useState<string>("");
+
   const backgroundImageStyle = {
     backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
     backgroundSize: "cover",
@@ -22,7 +24,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      await collectCurrentQuestRewards();
+      setFightLog(await collectCurrentQuestRewards());
     };
 
     setUser((prevUser) => ({
@@ -46,10 +48,12 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
         </div>
 
         <div className="flex flex-col items-center justify-end mb-[3%] w-full">
-          <p className="text-[1.25rem] font-semibold mb-[3%]">
+          {/* TODO: Check if user won fight, turn fightlog into animation */}
+          <p className="text-[1.25rem] font-semibold mb-[1%]">
             You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
             {user.currentQuest.CurrentQuest.Gold} gold.
           </p>
+          <p className="text-[0.8rem] mb-[3%]">{fightLog}</p>
           <button
             className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
             onClick={() => {

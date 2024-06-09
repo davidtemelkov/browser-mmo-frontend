@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { IFetchedUser } from "../../services/userService";
 import { cancelWork } from "../../services/workService";
 
@@ -21,7 +21,7 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
   const [remainingTime, setRemainingTime] = useState<number | null>(null);
   const [isLoading, SetIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
+  useMemo(() => {
     const workingUnitlTime = new Date(user.workingUntil).getTime();
     const currentTime = new Date().getTime();
     const timeDifference = workingUnitlTime - currentTime;
