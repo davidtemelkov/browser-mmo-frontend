@@ -1,6 +1,15 @@
 import { getUserFromStorage } from "../utils/localStorage";
 import { IQuest } from "./userService";
 
+interface ICollectCurrentQuestRewardsResponse {
+  fightLog: string;
+  fightWon: boolean;
+  monsterName: string;
+  monsterImageUrl: string;
+  monsterLevel: number;
+  monsterHealth: number;
+}
+
 const baseUrl = "http://localhost:8080/quests";
 
 export const generateQuests = async () => {
@@ -73,7 +82,10 @@ export const collectCurrentQuestRewards = async () => {
     },
   });
 
-  return await response.json();
+  const responseData: ICollectCurrentQuestRewardsResponse =
+    await response.json();
+
+  return responseData;
 };
 
 export const resetQuests = async () => {

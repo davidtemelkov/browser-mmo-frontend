@@ -9,13 +9,36 @@ interface CollectQuestRewardProps {
   setRerender: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface Monster {
+  name: string;
+  level: number;
+  imageUrl: string;
+  health: number;
+}
+
+interface FightAction {
+  attacker: string;
+  target: string;
+  damage: number;
+  isCritical: boolean;
+}
+
 export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   user,
-  setUser,
   rerender,
   setRerender,
 }) => {
-  const [fightLog, setFightLog] = useState<string>("");
+  const [actions, setActions] = useState<FightAction[]>([]);
+  const [monster, setMonster] = useState<Monster>({
+    name: "",
+    level: 0,
+    imageUrl: "",
+    health: 0,
+  });
+  const [currentActionIndex, setCurrentActionIndex] = useState<number>(0);
+  const [playerHealth, setPlayerHealth] = useState<number>(
+    user.constitution + 100
+  );
 
   const backgroundImageStyle = {
     backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
@@ -24,16 +47,57 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      setFightLog(await collectCurrentQuestRewards());
-    };
+      const response = await collectCurrentQuestRewards();
 
-    setUser((prevUser) => ({
-      ...prevUser,
-      gold: prevUser.gold + +prevUser.currentQuest.CurrentQuest.Gold,
-    }));
+      setActions(parseFightLog(response!.fightLog));
+      setMonster({
+        name: response!.monsterName,
+        imageUrl: response!.monsterImageUrl,
+        level: response!.monsterLevel,
+        health: Math.round(response!.monsterHealth),
+      });
+    };
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (currentActionIndex < actions.length) {
+      const timer = setTimeout(() => {
+        const action = actions[currentActionIndex];
+        if (action.target === user.name) {
+          setPlayerHealth((prevHealth) =>
+            Math.max(0, prevHealth - action.damage)
+          );
+        } else {
+          setMonster((prevMonster) => ({
+            ...prevMonster,
+            health: Math.max(0, prevMonster.health - action.damage),
+          }));
+        }
+        setCurrentActionIndex(currentActionIndex + 1);
+      }, 800); // Delay between actions
+      return () => clearTimeout(timer);
+    }
+  }, [currentActionIndex, actions, user.name]);
+
+  const parseFightLog = (log: string): FightAction[] => {
+    const actionLines = log
+      .split("\n")
+      .filter((line) => line.includes("deals"));
+    return actionLines.map((line) => {
+      const [attacker, rest] = line.split(" deals ");
+      const [damage, targetPart] = rest.split(" damage to ");
+      const [target, criticalPart] = targetPart.split(".");
+      const isCritical = criticalPart.includes("Critical hit!");
+      return {
+        attacker,
+        target,
+        damage: parseInt(damage),
+        isCritical,
+      };
+    });
+  };
 
   return (
     <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
@@ -48,20 +112,51 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
         </div>
 
         <div className="flex flex-col items-center justify-end mb-[3%] w-full">
-          {/* TODO: Check if user won fight, turn fightlog into animation */}
-          <p className="text-[1.25rem] font-semibold mb-[1%]">
-            You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
-            {user.currentQuest.CurrentQuest.Gold} gold.
-          </p>
-          <p className="text-[0.8rem] mb-[3%]">{fightLog}</p>
-          <button
-            className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%] "
-            onClick={() => {
-              setRerender(!rerender);
-            }}
-          >
-            Collect
-          </button>
+          <div className="flex justify-between w-full">
+            <div className="flex flex-col justify-between items-center w-[40%]">
+              <img src={user.imageURL} alt={user.name} className="w-[40%]" />
+              <h2>{user.name}</h2>
+              <div className="w-[70%] bg-gray-300">
+                <div
+                  className="bg-green-500 text-xs leading-none py-1 text-center text-white"
+                  style={{
+                    width: `${(playerHealth / 100) * 100}%`,
+                  }}
+                >
+                  {playerHealth}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col justify-between items-center w-[40%]">
+              <img src={monster.imageUrl} alt="monster" className="w-[50%]" />
+              <h2>{monster.name}</h2>
+              <div className="w-[70%] bg-gray-300">
+                <div
+                  className="bg-red-500 text-xs leading-none py-1 text-center text-white"
+                  style={{ width: `${(monster.health / 100) * 100}%` }}
+                >
+                  {monster.health}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {currentActionIndex >= actions.length && (
+            <>
+              <p className="text-[1.25rem] font-semibold mb-[1%]">
+                You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
+                {user.currentQuest.CurrentQuest.Gold} gold.
+              </p>
+              <button
+                className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%]"
+                onClick={() => {
+                  setRerender(!rerender);
+                }}
+              >
+                Collect
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
