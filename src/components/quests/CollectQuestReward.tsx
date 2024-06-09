@@ -29,6 +29,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   setRerender,
 }) => {
   const [actions, setActions] = useState<FightAction[]>([]);
+  const [fightWon, setFightWon] = useState<boolean>(false);
   const [monster, setMonster] = useState<Monster>({
     name: "",
     level: 0,
@@ -50,6 +51,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
       const response = await collectCurrentQuestRewards();
 
       setActions(parseFightLog(response!.fightLog));
+      setFightWon(response!.fightWon);
       setMonster({
         name: response!.monsterName,
         imageUrl: response!.monsterImageUrl,
@@ -143,10 +145,16 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
 
           {currentActionIndex >= actions.length && (
             <>
-              <p className="text-[1.25rem] font-semibold mb-[1%]">
-                You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
-                {user.currentQuest.CurrentQuest.Gold} gold.
-              </p>
+              {fightWon ? (
+                <p className="text-[1.25rem] font-semibold mb-[1%]">
+                  You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
+                  {user.currentQuest.CurrentQuest.Gold} gold.
+                </p>
+              ) : (
+                <p className="text-[1.25rem] font-semibold mb-[1%]">
+                  You died to {monster.name} xD
+                </p>
+              )}
               <button
                 className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%]"
                 onClick={() => {
