@@ -30,6 +30,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
 }) => {
   const [actions, setActions] = useState<FightAction[]>([]);
   const [fightWon, setFightWon] = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [monster, setMonster] = useState<Monster>({
     name: "",
     level: 0,
@@ -61,6 +62,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
     };
 
     fetchData();
+    setIsLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -102,70 +104,72 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   };
 
   return (
-    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
-      <div
-        className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200"
-        style={backgroundImageStyle}
-      >
-        <div className="justify-start mt-[5%]">
-          <h1 className="text-[2rem] font-semibold ">
-            {user.currentQuest.CurrentQuest.Name}
-          </h1>
-        </div>
-
-        <div className="flex flex-col items-center justify-end mb-[3%] w-full">
-          <div className="flex justify-between w-full">
-            <div className="flex flex-col justify-between items-center w-[40%]">
-              <img src={user.imageURL} alt={user.name} className="w-[40%]" />
-              <h2>{user.name}</h2>
-              <div className="w-[70%] bg-gray-300">
-                <div
-                  className="bg-green-500 text-xs leading-none py-1 text-center text-white"
-                  style={{
-                    width: `${(playerHealth / 100) * 100}%`,
-                  }}
-                >
-                  {playerHealth}
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between items-center w-[40%]">
-              <img src={monster.imageUrl} alt="monster" className="w-[50%]" />
-              <h2>{monster.name}</h2>
-              <div className="w-[70%] bg-gray-300">
-                <div
-                  className="bg-red-500 text-xs leading-none py-1 text-center text-white"
-                  style={{ width: `${(monster.health / 100) * 100}%` }}
-                >
-                  {monster.health}
-                </div>
-              </div>
+    <div
+      className="flex flex-col mb-[3%] w-[100%] h-[100%] items-center"
+      style={backgroundImageStyle}
+    >
+      <h1 className="text-[2rem] font-semibold mt-[5%]">
+        {user.currentQuest.CurrentQuest.Name}
+      </h1>
+      <div className="flex justify-between w-full">
+        <div className="flex flex-col items-center justify-end w-[40%]">
+          <img
+            src={user.imageURL}
+            alt={user.name}
+            className="w-[50%] h-[70%]"
+          />
+          <h2 className="mt-3">{user.name}</h2>
+          <div className="w-[70%] bg-gray-300 mt-3">
+            <div
+              className="bg-green-500 text-xs leading-none py-1 text-center text-white"
+              style={{
+                width: `${(playerHealth / 100) * 100}%`,
+              }}
+            >
+              {playerHealth}
             </div>
           </div>
-
-          {currentActionIndex >= actions.length && (
-            <>
-              {fightWon ? (
-                <p className="text-[1.25rem] font-semibold mb-[1%]">
-                  You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
-                  {user.currentQuest.CurrentQuest.Gold} gold.
-                </p>
-              ) : (
-                <p className="text-[1.25rem] font-semibold mb-[1%]">
-                  You died to {monster.name} xD
-                </p>
-              )}
-              <button
-                className="btn p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%]"
-                onClick={() => {
-                  setRerender(!rerender);
-                }}
-              >
-                Collect
-              </button>
-            </>
-          )}
         </div>
+        <div className="flex flex-col items-center justify-end w-[40%]">
+          <img
+            src={monster.imageUrl}
+            alt="monster"
+            className="w-[50%] h-[70%]"
+          />
+          <h2 className="mt-3">{monster.name}</h2>
+          <div className="w-[70%] bg-gray-300 mt-3">
+            <div
+              className="bg-red-500 text-xs leading-none py-1 text-center text-white"
+              style={{ width: `${(monster.health / 100) * 100}%` }}
+            >
+              {monster.health}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center mt-10 w-full">
+        {currentActionIndex >= actions.length && (
+          <>
+            {fightWon && isLoaded ? (
+              <p className="text-[1.25rem] font-semibold">
+                You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
+                {user.currentQuest.CurrentQuest.Gold} gold.
+              </p>
+            ) : (
+              <p className="text-[1.25rem] font-semibold mb-[1%]">
+                You died to {monster.name} xD
+              </p>
+            )}
+            <button
+              className="p-1 my-5 border-2 rounded-md bg-gray-300 mt-[5%]"
+              onClick={() => {
+                setRerender(!rerender);
+              }}
+            >
+              Collect
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

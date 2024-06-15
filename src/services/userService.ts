@@ -3,49 +3,49 @@ import { getUserFromStorage } from "../utils/localStorage";
 const baseUrl = "http://localhost:8080/users";
 
 export interface IValueLogin {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
-export interface IValueRegister{
-    name: string;
-    email: string;
-    password: string;
-    imageURL: string;
+export interface IValueRegister {
+  name: string;
+  email: string;
+  password: string;
+  imageURL: string;
 }
 
-export interface IFetchedUser{
-    name: string;
-    email: string;
-    createdOn: string;
-    imageURL: string;
-    level: number;
-    gold : number;
-    EXP : number;
-    bigDPoints : number;
-    strength : number;
-    dexterity : number;
-    constitution: number;
-    intelligence: number;
-    items: Record<string,IItem>;
-    weaponShop: Record<string,IItem>;
-    magicShop: Record<string,IItem>;
-    inventory: Record<string,IItem>;
-    mount: string;
-    mountImageURL: string;
-    isQuesting: boolean,
-    isWorking: boolean,
-    quests: Record<string, IQuest>;
-    currentQuest: Record<string, IQuest>;
-    questingUntil: string;
-    workingUntil: string;
-    workReward: number;
-    workDuration: number;
-    lastPlayedDate: string;
-    dailyQuestCount: number;
+export interface IFetchedUser {
+  name: string;
+  email: string;
+  createdOn: string;
+  imageURL: string;
+  level: number;
+  gold: number;
+  EXP: number;
+  bigDPoints: number;
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  items: Record<string, IItem>;
+  weaponShop: Record<string, IItem>;
+  magicShop: Record<string, IItem>;
+  inventory: Record<string, IItem>;
+  mount: string;
+  mountImageURL: string;
+  isQuesting: boolean;
+  isWorking: boolean;
+  quests: Record<string, IQuest>;
+  currentQuest: Record<string, IQuest>;
+  questingUntil: string;
+  workingUntil: string;
+  workReward: number;
+  workDuration: number;
+  lastPlayedDate: string;
+  dailyQuestCount: number;
 }
 
-export interface IQuest{
+export interface IQuest {
   Name: string;
   ImageURL: string;
   Time: string;
@@ -53,7 +53,7 @@ export interface IQuest{
   Gold: string;
 }
 
-export interface IWork{
+export interface IWork {
   Hours: number;
   Reward: number;
 }
@@ -67,7 +67,7 @@ export const initialQuest: IQuest = {
 };
 
 export const initialItem: IItem = {
-  id: "0",
+  whatItem: "",
   name: "",
   level: "",
   damageMin: 0,
@@ -81,10 +81,10 @@ export const initialItem: IItem = {
   blockChance: 0,
   isLegendary: false,
   imageURL: "",
-  price: 0
+  price: 0,
 };
 
-export const initalUser : IFetchedUser = {
+export const initalUser: IFetchedUser = {
   name: "name",
   email: "email@abv.bg",
   createdOn: "00-00-00T00:000:00",
@@ -98,70 +98,70 @@ export const initalUser : IFetchedUser = {
   constitution: 0,
   intelligence: 0,
   items: {
-    "Amulet": { ...initialItem },
-    "Boots": { ...initialItem },
-    "Chestplate": { ...initialItem },
-    "Gloves": { ...initialItem },
-    "Helmet": { ...initialItem },
-    "Ring": { ...initialItem },
-    "Shield": { ...initialItem },
-    "Weapon": { ...initialItem },
+    Amulet: { ...initialItem },
+    Boots: { ...initialItem },
+    Chestplate: { ...initialItem },
+    Gloves: { ...initialItem },
+    Helmet: { ...initialItem },
+    Ring: { ...initialItem },
+    Shield: { ...initialItem },
+    Weapon: { ...initialItem },
   },
-  weaponShop:{
-    "Item1": { ...initialItem },
-    "Item2": { ...initialItem },
-    "Item3": { ...initialItem },
-    "Item4": { ...initialItem },
-    "Item5": { ...initialItem },
-    "Item6": { ...initialItem },
+  weaponShop: {
+    Item1: { ...initialItem },
+    Item2: { ...initialItem },
+    Item3: { ...initialItem },
+    Item4: { ...initialItem },
+    Item5: { ...initialItem },
+    Item6: { ...initialItem },
   },
   magicShop: {
-    "Item1": { ...initialItem },
-    "Item2": { ...initialItem },
-    "Item3": { ...initialItem },
-    "Item4": { ...initialItem },
-    "Item5": { ...initialItem },
-    "Item6": { ...initialItem },
+    Item1: { ...initialItem },
+    Item2: { ...initialItem },
+    Item3: { ...initialItem },
+    Item4: { ...initialItem },
+    Item5: { ...initialItem },
+    Item6: { ...initialItem },
   },
   inventory: {
-    "Item1": { ...initialItem },
-    "Item2": { ...initialItem },
-    "Item3": { ...initialItem },
-    "Item4": { ...initialItem },
-    "Item5": { ...initialItem },
-    "Item6": { ...initialItem },
-    "Item7": { ...initialItem },
-    "Item8": { ...initialItem },
-    "Item9": { ...initialItem },
-    "Item10": { ...initialItem },
-    "Item11": { ...initialItem },
-    "Item12": { ...initialItem },
-    "Item13": { ...initialItem },
-    "Item14": { ...initialItem },
-    "Item15": { ...initialItem },
+    Item1: { ...initialItem },
+    Item2: { ...initialItem },
+    Item3: { ...initialItem },
+    Item4: { ...initialItem },
+    Item5: { ...initialItem },
+    Item6: { ...initialItem },
+    Item7: { ...initialItem },
+    Item8: { ...initialItem },
+    Item9: { ...initialItem },
+    Item10: { ...initialItem },
+    Item11: { ...initialItem },
+    Item12: { ...initialItem },
+    Item13: { ...initialItem },
+    Item14: { ...initialItem },
+    Item15: { ...initialItem },
   },
   mount: "",
   mountImageURL: "",
   isQuesting: false,
   isWorking: false,
   quests: {
-    "Quest0": { ...initialQuest },
-    "Quest1": { ...initialQuest },
-    "Quest2": { ...initialQuest },
+    Quest0: { ...initialQuest },
+    Quest1: { ...initialQuest },
+    Quest2: { ...initialQuest },
   },
   currentQuest: {
-    "CurrentQuest": { ...initialQuest },
+    CurrentQuest: { ...initialQuest },
   },
   questingUntil: "",
   workingUntil: "",
   workReward: 0,
   workDuration: 0,
   lastPlayedDate: "",
-  dailyQuestCount: 0
-}
+  dailyQuestCount: 0,
+};
 
-export interface IItem{
-  id: string;
+export interface IItem {
+  whatItem: string;
   name: string;
   level: string;
   damageMin: number;
@@ -178,170 +178,170 @@ export interface IItem{
   price: number;
 }
 
-export const login = async(values : IValueLogin) => {
-    const body = JSON.stringify(values);
+export const login = async (values: IValueLogin) => {
+  const body = JSON.stringify(values);
 
-    const response = await fetch(`${baseUrl}/login`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body,
-    });
-  
-    if (response.status == 203) {
-      return;
-    }
-  
-    if (response.status == 401) {
-      throw new Error("Unautorized: Password or email are incorrect");
-    }
-  
-    if (response.status == 400) {
-      throw new Error("Bad request: Data provided isn't in the correct format");
-    }
-  
-    const jwt = await response.json();
+  const response = await fetch(`${baseUrl}/login`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body,
+  });
 
-    return jwt;
-  };
+  if (response.status == 203) {
+    return;
+  }
 
-  export const register = async (value: IValueRegister) => {
-    const body = JSON.stringify(value);
-  
-    const response = await fetch(`${baseUrl}/register`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body,
-    });
-  
-    if (response.status == 203) {
-      return;
-    }
-  
-    if (response.status == 409) {
-      throw new Error("Conflict: User with this email already exists");
-    }
-  
-    if (response.status == 400) {
-      throw new Error("Bad request: Data provided isn't in the correct format");
-    }
-  
-    const jwt = await response.json();
+  if (response.status == 401) {
+    throw new Error("Unautorized: Password or email are incorrect");
+  }
 
-    return jwt;
-  };
+  if (response.status == 400) {
+    throw new Error("Bad request: Data provided isn't in the correct format");
+  }
 
-  export const getUser = async (email: string) => {
-    const jwt = getUserFromStorage()!.token;
-    
-    if (!jwt) {
-      return;
-    }
-  
-    const response = await fetch(`${baseUrl}/${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${jwt}`
-      },
-    });
-  
-    if (response.status == 204) {
-      throw new Error("")
-    }
-  
-    const data : IFetchedUser  = await response.json();
-  
-    return data;
-  };
+  const jwt = await response.json();
 
-  export const upgradeStrength = async () => {
-    const jwt = getUserFromStorage()!.token;
-    
-    if (!jwt) {
-      return;
-    }
-  
-    const response = await fetch(`${baseUrl}/strength`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${jwt}`
-      },
-    });
-  
-    if (response.status == 403) {
-      throw new Error("Not enough gold")
-    }
+  return jwt;
+};
 
-    return response.status;
-  };
+export const register = async (value: IValueRegister) => {
+  const body = JSON.stringify(value);
 
-  export const upgradeDexterity = async () => {
-    const jwt = getUserFromStorage()!.token;
-    
-    if (!jwt) {
-      return;
-    }
-  
-    const response = await fetch(`${baseUrl}/dexterity`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${jwt}`
-      },
-    });
-  
-    if (response.status == 403) {
-      throw new Error("Not enough gold")
-    }
+  const response = await fetch(`${baseUrl}/register`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body,
+  });
 
-    return response.status;
-  };
+  if (response.status == 203) {
+    return;
+  }
 
-  export const upgradeConstitution = async () => {
-    const jwt = getUserFromStorage()!.token;
-    
-    if (!jwt) {
-      return;
-    }
-  
-    const response = await fetch(`${baseUrl}/constitution`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${jwt}`
-      },
-    });
-  
-    if (response.status == 403) {
-      throw new Error("Not enough gold")
-    }
+  if (response.status == 409) {
+    throw new Error("Conflict: User with this email already exists");
+  }
 
-    return response.status;
-  };
+  if (response.status == 400) {
+    throw new Error("Bad request: Data provided isn't in the correct format");
+  }
 
-  export const upgradeIntelligence = async () => {
-    const jwt = getUserFromStorage()!.token;
-    
-    if (!jwt) {
-      return;
-    }
-  
-    const response = await fetch(`${baseUrl}/intelligence`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${jwt}`
-      },
-    });
-  
-    if (response.status == 403) {
-      throw new Error("Not enough gold")
-    }
+  const jwt = await response.json();
 
-    return response.status;
-  };
+  return jwt;
+};
+
+export const getUser = async (email: string) => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/${email}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (response.status == 204) {
+    throw new Error("");
+  }
+
+  const data: IFetchedUser = await response.json();
+
+  return data;
+};
+
+export const upgradeStrength = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/strength`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (response.status == 403) {
+    throw new Error("Not enough gold");
+  }
+
+  return response.status;
+};
+
+export const upgradeDexterity = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/dexterity`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (response.status == 403) {
+    throw new Error("Not enough gold");
+  }
+
+  return response.status;
+};
+
+export const upgradeConstitution = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/constitution`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (response.status == 403) {
+    throw new Error("Not enough gold");
+  }
+
+  return response.status;
+};
+
+export const upgradeIntelligence = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/intelligence`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (response.status == 403) {
+    throw new Error("Not enough gold");
+  }
+
+  return response.status;
+};

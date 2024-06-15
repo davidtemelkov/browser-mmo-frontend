@@ -323,9 +323,8 @@ export const Profile: FC = () => {
                 const slotNumber = groupIndex * 5 + slotIndex + 1;
                 const itemKey = `Item${slotNumber}`;
                 const imageUrl =
-                  user.items instanceof Map && user.items.has(itemKey)
-                    ? user.items.get(itemKey)!.imageURL
-                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
+                  user.inventory[itemKey]?.imageURL ||
+                  "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
 
                 return (
                   <div
