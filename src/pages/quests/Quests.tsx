@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getUser } from "../../services/userService";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { generateQuests, resetQuests } from "../../services/questService";
@@ -14,7 +13,6 @@ import { useUser } from "../../contexts/userContext";
 export const Quests: FC = () => {
   const { user, setUser } = useUser();
   const [rerender, setRerender] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {

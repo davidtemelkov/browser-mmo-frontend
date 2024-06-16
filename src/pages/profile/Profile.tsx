@@ -72,9 +72,9 @@ export const Profile: FC = () => {
   };
 
   return (
-    <div className="flex h-[100%] bg-blue-200">
+    <div className="flex h-full w-full bg-blue-200">
       {/* Left Section - Info and stats */}
-      <div className="p-4 rounded-md mr-4 flex flex-col w-1/2 h-[100%]">
+      <div className="p-4 rounded-md  flex flex-col w-1/2 h-[100%]">
         <div className="flex rounded-md w-full h-[25%]">
           <div className="w-[27%]">
             <img
@@ -181,7 +181,7 @@ export const Profile: FC = () => {
       </div>
 
       {/* Right Section - Inventory and Items */}
-      <div className="p-4 rounded-md flex flex-col w-1/2 h-[100%] justify-center">
+      <div className="p-4 rounded-md flex flex-col w-1/2 justify-center">
         <div className="h-[75%] flex w-full justify-center gap-x-3">
           <div className="flex flex-col h-[100%] w-[25%] justify-center">
             <div

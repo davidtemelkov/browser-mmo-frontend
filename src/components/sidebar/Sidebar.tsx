@@ -43,17 +43,17 @@ export const Sidebar: FC = () => {
           </li>
           <li
             className={`border border-blue-300 rounded-md p-1 w-full text-center ${
-              isSelected("/weapons") ? "bg-green-400" : "bg-blue-300"
+              isSelected("/weaponshop") ? "bg-green-400" : "bg-blue-300"
             }`}
           >
-            <Link to={`/weapons`}>Weapons</Link>
+            <Link to={`/weaponshop`}>Weapons</Link>
           </li>
           <li
             className={`border border-blue-300 rounded-md p-1 w-full text-center ${
-              isSelected("/magic") ? "bg-green-400" : "bg-blue-300"
+              isSelected("/magicshop") ? "bg-green-400" : "bg-blue-300"
             }`}
           >
-            <Link to={`/magic`}>Magic</Link>
+            <Link to={`/magicshop`}>Magic</Link>
           </li>
           <li
             className={`border border-blue-300 rounded-md p-1 w-full text-center ${

@@ -345,3 +345,39 @@ export const upgradeIntelligence = async () => {
 
   return response.status;
 };
+
+export const generateWeaponStore = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/shops/weapon`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response.status;
+};
+
+export const generateMagicStore = async () => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/shops/magic`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response.status;
+};
