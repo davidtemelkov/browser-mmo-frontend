@@ -55,8 +55,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Weapon.imageURL !== ""
-                    ? user.items.Weapon.imageURL
+                  user.equippedItems.Weapon.imageURL !== ""
+                    ? user.equippedItems.Weapon.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -69,8 +69,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Gloves.imageURL !== ""
-                    ? user.items.Gloves.imageURL
+                  user.equippedItems.Gloves.imageURL !== ""
+                    ? user.equippedItems.Gloves.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -85,8 +85,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Helmet.imageURL !== ""
-                    ? user.items.Helmet.imageURL
+                  user.equippedItems.Helmet.imageURL !== ""
+                    ? user.equippedItems.Helmet.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -99,8 +99,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Chestplate.imageURL !== ""
-                    ? user.items.Chestplate.imageURL
+                  user.equippedItems.Chestplate.imageURL !== ""
+                    ? user.equippedItems.Chestplate.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -113,8 +113,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Boots.imageURL !== ""
-                    ? user.items.Boots.imageURL
+                  user.equippedItems.Boots.imageURL !== ""
+                    ? user.equippedItems.Boots.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -129,8 +129,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Amulet.imageURL !== ""
-                    ? user.items.Amulet.imageURL
+                  user.equippedItems.Amulet.imageURL !== ""
+                    ? user.equippedItems.Amulet.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -143,8 +143,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Shield.imageURL !== ""
-                    ? user.items.Shield.imageURL
+                  user.equippedItems.Shield.imageURL !== ""
+                    ? user.equippedItems.Shield.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -157,8 +157,8 @@ export const WeaponShop: FC = () => {
             >
               <img
                 src={
-                  user.items.Ring.imageURL !== ""
-                    ? user.items.Ring.imageURL
+                  user.equippedItems.Ring.imageURL !== ""
+                    ? user.equippedItems.Ring.imageURL
                     : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
                 }
                 alt=""
@@ -168,11 +168,11 @@ export const WeaponShop: FC = () => {
             <div className="flex justify-end self-end">
               <GiCheckedShield className="w-[100%] h-[100%]"></GiCheckedShield>
               <p className="text-xl">
-                {user.items
-                  ? user.items.Helmet.armourAmount +
-                    user.items.Chestplate.armourAmount +
-                    user.items.Gloves.armourAmount +
-                    user.items.Boots.armourAmount
+                {user.equippedItems
+                  ? user.equippedItems.Helmet.armourAmount +
+                    user.equippedItems.Chestplate.armourAmount +
+                    user.equippedItems.Gloves.armourAmount +
+                    user.equippedItems.Boots.armourAmount
                   : 420}
               </p>
             </div>

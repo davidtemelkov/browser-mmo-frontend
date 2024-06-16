@@ -27,7 +27,7 @@ export interface IFetchedUser {
   dexterity: number;
   constitution: number;
   intelligence: number;
-  items: Record<string, IItem>;
+  equippedItems: Record<string, IItem>;
   weaponShop: Record<string, IItem>;
   magicShop: Record<string, IItem>;
   inventory: Record<string, IItem>;
@@ -97,7 +97,7 @@ export const initalUser: IFetchedUser = {
   dexterity: 0,
   constitution: 0,
   intelligence: 0,
-  items: {
+  equippedItems: {
     Amulet: { ...initialItem },
     Boots: { ...initialItem },
     Chestplate: { ...initialItem },
