@@ -1,5 +1,6 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import {
+  equipItem,
   getUser,
   upgradeConstitution,
   upgradeDexterity,
@@ -12,6 +13,7 @@ import { getEmailFromStorage } from "../../utils/localStorage";
 
 export const Profile: FC = () => {
   const { user, setUser } = useUser();
+  const [rerender, setRerender] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,7 @@ export const Profile: FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [rerender]);
 
   //TODO: use the response to change the gold
   const increaseStrength = async () => {
@@ -69,6 +71,15 @@ export const Profile: FC = () => {
         gold: prevUser.gold - prevUser.intelligence,
       }));
     }
+  };
+
+  const handleEquipItem = async (slotKey: string) => {
+    const resp = await equipItem(slotKey);
+
+    if (resp) {
+      setRerender(true);
+    }
+    // TODO: Add some sort of errors and display could not equip item
   };
 
   return (
@@ -123,7 +134,7 @@ export const Profile: FC = () => {
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Strength</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.strength}</p>
+              <p className="text-l font-semibold">{user?.totalStrength}</p>
               <button
                 disabled={user.gold < user.strength}
                 onClick={() => increaseStrength()}
@@ -133,13 +144,13 @@ export const Profile: FC = () => {
               </button>
             </div>
             <p className="ml-[45%]">{`Damage: ${Math.floor(
-              user.strength / 2
-            )}/${user.strength}`}</p>
+              user.damageMin + user.strength / 2
+            )}/${user.damageMax + user.strength / 2}`}</p>
           </div>
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.dexterity}</p>
+              <p className="text-l font-semibold">{user?.totalDexterity}</p>
               <button
                 onClick={() => increaseDexterity()}
                 className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
@@ -147,14 +158,14 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">{`Crit: ${(user.dexterity * 0.01).toFixed(
-              2
-            )}%`}</p>
+            <p className="ml-[45%]">{`Crit: ${(
+              user.totalDexterity * 0.01
+            ).toFixed(2)}%`}</p>
           </div>
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Constitution</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.constitution}</p>
+              <p className="text-l font-semibold">{user?.totalConstitution}</p>
               <button
                 onClick={() => increaseConstitution()}
                 className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
@@ -162,12 +173,14 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">{`Life: ${100 + user.constitution}`}</p>
+            <p className="ml-[45%]">{`Life: ${
+              100 + user.totalConstitution
+            }`}</p>
           </div>
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Intelligence</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.intelligence}</p>
+              <p className="text-l font-semibold">{user?.totalIntelligence}</p>
               <button
                 onClick={() => increaseIntelligence()}
                 className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"
@@ -175,7 +188,7 @@ export const Profile: FC = () => {
                 +
               </button>
             </div>
-            <p className="ml-[45%]">{`Fireball: ${user.intelligence}`}</p>
+            <p className="ml-[45%]">{`Fireball: ${user.totalIntelligence}`}</p>
           </div>
         </div>
       </div>
@@ -302,14 +315,7 @@ export const Profile: FC = () => {
             </div>
             <div className="flex justify-end self-end">
               <GiCheckedShield className="w-[100%] h-[100%]"></GiCheckedShield>
-              <p className="text-xl">
-                {user.equippedItems
-                  ? user.equippedItems.Helmet.armourAmount +
-                    user.equippedItems.Chestplate.armourAmount +
-                    user.equippedItems.Gloves.armourAmount +
-                    user.equippedItems.Boots.armourAmount
-                  : 420}
-              </p>
+              <p className="text-xl">{user.armourAmount}</p>
             </div>
           </div>
         </div>
@@ -329,7 +335,8 @@ export const Profile: FC = () => {
                 return (
                   <div
                     key={itemKey}
-                    className="border rounded-md w-[100%] border-blue-300"
+                    className="border rounded-md w-[100%] border-blue-300 hover:cursor-pointer"
+                    onClick={() => handleEquipItem(itemKey)}
                   >
                     <img src={imageUrl} alt="" className="h-[100%] w-[100%]" />
                   </div>

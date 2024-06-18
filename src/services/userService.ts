@@ -27,6 +27,10 @@ export interface IFetchedUser {
   dexterity: number;
   constitution: number;
   intelligence: number;
+  totalStrength: number;
+  totalDexterity: number;
+  totalConstitution: number;
+  totalIntelligence: number;
   equippedItems: Record<string, IItem>;
   weaponShop: Record<string, IItem>;
   magicShop: Record<string, IItem>;
@@ -43,6 +47,11 @@ export interface IFetchedUser {
   workDuration: number;
   lastPlayedDate: string;
   dailyQuestCount: number;
+  armourAmount: number;
+  blockChance: number;
+  damageMin: number;
+  damageMax: number;
+  damageAverage: number;
 }
 
 export interface IQuest {
@@ -97,6 +106,15 @@ export const initalUser: IFetchedUser = {
   dexterity: 0,
   constitution: 0,
   intelligence: 0,
+  totalStrength: 0,
+  totalDexterity: 0,
+  totalConstitution: 0,
+  totalIntelligence: 0,
+  armourAmount: 0,
+  blockChance: 0,
+  damageMin: 0,
+  damageMax: 0,
+  damageAverage: 0,
   equippedItems: {
     Amulet: { ...initialItem },
     Boots: { ...initialItem },
@@ -373,6 +391,65 @@ export const generateMagicStore = async () => {
 
   const response = await fetch(`${baseUrl}/shops/magic`, {
     method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response.status;
+};
+
+export const equipItem = async (slotKey: string) => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/equip/${slotKey}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response.status;
+};
+
+export const sellItem = async (slotKey: string) => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/sell/${slotKey}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response.status;
+};
+
+export const buyItem = async (slotKey: string, shopType: string) => {
+  const jwt = getUserFromStorage()!.token;
+
+  const url =
+    shopType == "magicshop"
+      ? `${baseUrl}/shops/magic/${slotKey}`
+      : `${baseUrl}/shops/weapon/${slotKey}`;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(url, {
+    method: "PATCH",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${jwt}`,

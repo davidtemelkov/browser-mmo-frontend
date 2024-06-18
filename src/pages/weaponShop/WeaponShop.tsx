@@ -1,9 +1,57 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useUser } from "../../contexts/userContext";
 import { GiCheckedShield } from "react-icons/gi";
+import {
+  buyItem,
+  generateWeaponStore,
+  sellItem,
+  getUser,
+} from "../../services/userService";
+import { getEmailFromStorage } from "../../utils/localStorage";
+import { getCurrentDate } from "../../utils/date";
 
 export const WeaponShop: FC = () => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  const [rerender, setRerender] = useState<boolean>(false);
+
+  // TODO: Fix bug that doesn't rerender inventory if you buy or sell more than 1
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedUser = await getUser(getEmailFromStorage()!);
+      setUser(fetchedUser!);
+
+      if (fetchedUser!.weaponShop.Item1.price === 0) {
+        await generateWeaponStore();
+        setRerender(!rerender);
+      }
+
+      // TODO: Need to set lastplayed to current on generate shops
+      // if (fetchedUser!.lastPlayedDate !== getCurrentDate()) {
+      //   await generateWeaponStore();
+      //   setRerender(!rerender);
+      // }
+    };
+
+    fetchData();
+  }, [rerender]);
+
+  const handleBuyItem = async (slotKey: string) => {
+    const resp = await buyItem(slotKey, "weapon");
+
+    if (resp) {
+      setRerender(true);
+    }
+    // TODO: Add some sort of errors and display could not buy item
+  };
+
+  const handleSellItem = async (slotKey: string) => {
+    const resp = await sellItem(slotKey);
+
+    if (resp) {
+      setRerender(true);
+    }
+    // TODO: Add some sort of errors and display could not sell item
+  };
 
   // TODO: Make stuff into components and reuse
   return (
@@ -32,6 +80,7 @@ export const WeaponShop: FC = () => {
                   <div
                     key={itemKey}
                     className="flex border rounded-md w-[20%] border-blue-300"
+                    onClick={() => handleBuyItem(itemKey)}
                   >
                     <img
                       src={imageUrl}
@@ -195,6 +244,7 @@ export const WeaponShop: FC = () => {
                   <div
                     key={itemKey}
                     className="border rounded-md w-[100%] border-blue-300"
+                    onClick={() => handleSellItem(itemKey)}
                   >
                     <img src={imageUrl} alt="" className="h-[100%] w-[100%]" />
                   </div>
