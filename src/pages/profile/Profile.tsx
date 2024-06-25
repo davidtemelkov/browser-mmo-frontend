@@ -11,6 +11,9 @@ import { useUser } from "../../contexts/userContext";
 import { GiCheckedShield } from "react-icons/gi";
 import { getEmailFromStorage } from "../../utils/localStorage";
 
+const BASE_EXP = 100.0;
+const EXP_EXPONENT = 1.5;
+
 export const Profile: FC = () => {
   const { user, setUser } = useUser();
   const [rerender, setRerender] = useState<boolean>(false);
@@ -31,7 +34,7 @@ export const Profile: FC = () => {
     if (resp) {
       setUser((prevUser) => ({
         ...prevUser,
-        strength: prevUser.strength + 1,
+        totalStrength: prevUser.totalStrength + 1,
         gold: prevUser.gold - prevUser.strength,
       }));
     }
@@ -43,7 +46,7 @@ export const Profile: FC = () => {
     if (resp) {
       setUser((prevUser) => ({
         ...prevUser,
-        dexterity: prevUser.dexterity + 1,
+        totalDexterity: prevUser.totalDexterity + 1,
         gold: prevUser.gold - prevUser.dexterity,
       }));
     }
@@ -55,7 +58,7 @@ export const Profile: FC = () => {
     if (resp) {
       setUser((prevUser) => ({
         ...prevUser,
-        constitution: prevUser.constitution + 1,
+        totalConstitution: prevUser.totalConstitution + 1,
         gold: prevUser.gold - prevUser.constitution,
       }));
     }
@@ -67,7 +70,7 @@ export const Profile: FC = () => {
     if (resp) {
       setUser((prevUser) => ({
         ...prevUser,
-        intelligence: prevUser.intelligence + 1,
+        totalIntelligence: prevUser.totalIntelligence + 1,
         gold: prevUser.gold - prevUser.intelligence,
       }));
     }
@@ -81,6 +84,10 @@ export const Profile: FC = () => {
     }
     // TODO: Add some sort of errors and display could not equip item
   };
+
+  function CalculateExpForLvlUp(lvl: number) {
+    return Math.floor(BASE_EXP * Math.pow(lvl, EXP_EXPONENT));
+  }
 
   return (
     <div className="flex h-full w-full bg-blue-200">
@@ -106,13 +113,13 @@ export const Profile: FC = () => {
                 <tr className="table-row items-baseline  space-x-4">
                   <td className="font-semibold text-[125%]">Level</td>
                   <td className="font-semibold text-[110%] pl-9">
-                    {user?.level}
+                    {user?.lvl}
                   </td>
                 </tr>
                 <tr className="table-row items-baseline  space-x-4">
                   <td className="font-semibold text-[125%]">Experience</td>
                   <td className="font-semibold text-[110%] pl-9">
-                    {user?.EXP}/0
+                    {user.EXP}/{CalculateExpForLvlUp(user.lvl)}
                   </td>
                 </tr>
                 <tr className="table-row items-baseline  space-x-4">
@@ -134,7 +141,7 @@ export const Profile: FC = () => {
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Strength</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.totalStrength}</p>
+              <p className="text-l font-semibold">{user.totalStrength}</p>
               <button
                 disabled={user.gold < user.strength}
                 onClick={() => increaseStrength()}
@@ -150,7 +157,7 @@ export const Profile: FC = () => {
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>
             <div className="flex justify-end items-center">
-              <p className="text-l font-semibold">{user?.totalDexterity}</p>
+              <p className="text-l font-semibold">{user.totalDexterity}</p>
               <button
                 onClick={() => increaseDexterity()}
                 className="border ml-3 p-1 w-[8%] h-[8%] rounded-md bg-green-200 border-blue-300"

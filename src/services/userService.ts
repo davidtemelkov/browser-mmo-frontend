@@ -19,7 +19,7 @@ export interface IFetchedUser {
   email: string;
   createdOn: string;
   imageURL: string;
-  level: number;
+  lvl: number;
   gold: number;
   EXP: number;
   bigDPoints: number;
@@ -78,7 +78,7 @@ export const initialQuest: IQuest = {
 export const initialItem: IItem = {
   whatItem: "",
   name: "",
-  level: "",
+  lvl: "",
   damageMin: 0,
   damageMax: 0,
   damageAverage: 0,
@@ -98,7 +98,7 @@ export const initalUser: IFetchedUser = {
   email: "email@abv.bg",
   createdOn: "00-00-00T00:000:00",
   imageURL: "",
-  level: 0,
+  lvl: 0,
   gold: 0,
   EXP: 0,
   bigDPoints: 0,
@@ -181,7 +181,7 @@ export const initalUser: IFetchedUser = {
 export interface IItem {
   whatItem: string;
   name: string;
-  level: string;
+  lvl: string;
   damageMin: number;
   damageMax: number;
   damageAverage: number;

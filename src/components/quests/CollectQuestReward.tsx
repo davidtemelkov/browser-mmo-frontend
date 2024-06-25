@@ -11,7 +11,7 @@ interface CollectQuestRewardProps {
 
 interface Monster {
   name: string;
-  level: number;
+  lvl: number;
   imageUrl: string;
   health: number;
 }
@@ -33,7 +33,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [monster, setMonster] = useState<Monster>({
     name: "",
-    level: 0,
+    lvl: 0,
     imageUrl: "",
     health: 0,
   });
@@ -56,7 +56,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
       setMonster({
         name: response!.monsterName,
         imageUrl: response!.monsterImageUrl,
-        level: response!.monsterLevel,
+        lvl: response!.monsterLevel,
         health: Math.round(response!.monsterHealth),
       });
     };
