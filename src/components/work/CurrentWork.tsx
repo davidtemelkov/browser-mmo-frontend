@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { IFetchedUser } from "../../services/userService";
-import { cancelWork } from "../../services/workService";
+import { IFetchedUser } from "../../services/user";
+import { cancelWork } from "../../services/work";
 
 interface CurrentWorkProps {
   user: IFetchedUser;

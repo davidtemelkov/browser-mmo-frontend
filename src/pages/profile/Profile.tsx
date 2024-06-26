@@ -6,7 +6,7 @@ import {
   upgradeDexterity,
   upgradeIntelligence,
   upgradeStrength,
-} from "../../services/userService";
+} from "../../services/user";
 import { useUser } from "../../contexts/userContext";
 import { GiCheckedShield } from "react-icons/gi";
 import { getEmailFromStorage } from "../../utils/localStorage";
@@ -151,8 +151,8 @@ export const Profile: FC = () => {
               </button>
             </div>
             <p className="ml-[45%]">{`Damage: ${Math.floor(
-              user.damageMin + user.strength / 2
-            )}/${user.damageMax + user.strength / 2}`}</p>
+              user.damageMin + user.totalStrength / 2
+            )}/${user.damageMax + user.totalStrength / 2}`}</p>
           </div>
           <div className="rounded-md p-3 h-[25%]">
             <p className="text-xl font-bold">Dexterity</p>

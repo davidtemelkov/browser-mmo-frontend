@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
-import { IFetchedUser, IWork } from "../../services/userService";
-import { setWork } from "../../services/workService";
+import { IFetchedUser, IWork } from "../../services/user";
+import { setWork } from "../../services/work";
 
 interface WorkComponentProps {
   user: IFetchedUser;

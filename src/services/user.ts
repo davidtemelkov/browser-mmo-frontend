@@ -52,6 +52,7 @@ export interface IFetchedUser {
   damageMin: number;
   damageMax: number;
   damageAverage: number;
+  dungeon: number;
 }
 
 export interface IQuest {
@@ -176,6 +177,7 @@ export const initalUser: IFetchedUser = {
   workDuration: 0,
   lastPlayedDate: "",
   dailyQuestCount: 0,
+  dungeon: 0,
 };
 
 export interface IItem {

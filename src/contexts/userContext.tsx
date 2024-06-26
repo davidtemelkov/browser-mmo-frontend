@@ -6,9 +6,9 @@ import {
   FC,
   ReactNode,
 } from "react";
-import { getUser, initalUser } from "../services/userService";
+import { getUser, initalUser } from "../services/user";
 import { getEmailFromStorage } from "../utils/localStorage";
-import { IFetchedUser } from "../services/userService";
+import { IFetchedUser } from "../services/user";
 import { Loading } from "../components/loading";
 
 interface IUserContext {

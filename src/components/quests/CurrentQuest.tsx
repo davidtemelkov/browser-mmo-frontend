@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { IFetchedUser } from "../../services/userService";
-import { cancelCurrentQuest } from "../../services/questService";
+import { IFetchedUser } from "../../services/user";
+import { cancelCurrentQuest } from "../../services/quest";
 
 interface CurrentQuestProps {
   user: IFetchedUser;

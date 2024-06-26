@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { IValueLogin, login } from "../../services/userService";
+import { IValueLogin, login } from "../../services/user";
 import { Link, useNavigate } from "react-router-dom";
 import { ITokenPayload, decodeToken } from "../../utils/jwt";
 import { getUserFromStorage, saveToStorage } from "../../utils/localStorage";

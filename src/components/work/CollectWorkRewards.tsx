@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
-import { IFetchedUser } from "../../services/userService";
-import { collectWorkRewards } from "../../services/workService";
+import { IFetchedUser } from "../../services/user";
+import { collectWorkRewards } from "../../services/work";
 
 interface CollectWorkRewardsProps {
   user: IFetchedUser;

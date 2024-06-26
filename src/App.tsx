@@ -8,6 +8,7 @@ import { UserProvider } from "./contexts/userContext";
 import { Work } from "./pages/work";
 import { WeaponShop } from "./pages/weaponShop";
 import { MagicShop } from "./pages/magicShop";
+import { Dungeon } from "./pages/dungeon";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/work" element={<Work />} />
               <Route path="/weaponshop" element={<WeaponShop />} />
               <Route path="/magicshop" element={<MagicShop />} />
+              <Route path="/dungeon" element={<Dungeon />} />
             </Route>
           </Routes>
         </BrowserRouter>

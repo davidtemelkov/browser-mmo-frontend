@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { getUser } from "../../services/userService";
+import { getUser } from "../../services/user";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import {

@@ -1,7 +1,7 @@
 import { getUserFromStorage } from "../utils/localStorage";
-import { IQuest } from "./userService";
+import { IQuest } from "./user";
 
-interface ICollectCurrentQuestRewardsResponse {
+export interface ICollectCurrentQuestRewardsResponse {
   fightLog: string;
   fightWon: boolean;
   monsterName: string;

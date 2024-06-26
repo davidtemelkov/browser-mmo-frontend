@@ -6,7 +6,7 @@ import {
   generateMagicStore,
   getUser,
   sellItem,
-} from "../../services/userService";
+} from "../../services/user";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { getCurrentDate } from "../../utils/date";
 

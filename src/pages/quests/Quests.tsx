@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { getUser } from "../../services/userService";
+import { getUser } from "../../services/user";
 import { getEmailFromStorage } from "../../utils/localStorage";
-import { generateQuests, resetQuests } from "../../services/questService";
+import { generateQuests, resetQuests } from "../../services/quest";
 import {
   CollectQuestReward,
   CurrentQuest,

@@ -6,7 +6,7 @@ import {
   generateWeaponStore,
   sellItem,
   getUser,
-} from "../../services/userService";
+} from "../../services/user";
 import { getEmailFromStorage } from "../../utils/localStorage";
 import { getCurrentDate } from "../../utils/date";
 

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { IFetchedUser, IQuest } from "../../services/userService";
-import { setCurrentQuest } from "../../services/questService";
+import { IFetchedUser, IQuest } from "../../services/user";
+import { setCurrentQuest } from "../../services/quest";
 
 interface QuestsProps {
   user: IFetchedUser;
