@@ -40,14 +40,14 @@ export const Dungeon: FC = () => {
   const handleButtonClick = () => {
     if (isFightStarted) {
       setIsFightStarted(false);
-      setRerender(true);
+      setRerender(!rerender);
     } else {
       setIsFightStarted(true);
     }
   };
 
   return (
-    <div className="flex flex-col items-center h-full bg-blue-200">
+    <div className="flex flex-col items-center h-full bg-blue-200 bg-opacity-60">
       {isFightStarted ? (
         <>
           <Fight
@@ -74,7 +74,7 @@ export const Dungeon: FC = () => {
           </div>
         </>
       ) : (
-        // TODO: Add position somewhere
+        // TODO: Add dungeoon position somewhere
         <div className="flex justify-between items-center min-h-2/3 w-full">
           <img className="max-w-[30%] max-h-[70%] ml-10" src={boss.imageUrl} />
           <table className="w-[20%] table mr-[7rem]">

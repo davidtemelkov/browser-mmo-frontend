@@ -34,7 +34,7 @@ export const CollectWorkRewards: FC<CollectWorkRewardsProps> = ({
   }, []);
 
   return (
-    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
+    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200 bg-opacity-60">
       <div
         className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200"
         style={backgroundImageStyle}

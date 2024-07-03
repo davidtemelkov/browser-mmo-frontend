@@ -21,7 +21,7 @@ export const QuestsComponent: FC<QuestsProps> = ({
   const isAvailable = user.dailyQuestCount >= 10 || user.isWorking;
 
   return (
-    <div className="flex w-[100%] h-[100%] bg-blue-200">
+    <div className="flex w-[100%] h-[100%] bg-blue-200 bg-opacity-60">
       <div
         className={`flex flex-col w-1/3 h-[100%] items-center pt-[5%] ${
           isAvailable

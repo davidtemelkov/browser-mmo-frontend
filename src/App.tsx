@@ -9,6 +9,7 @@ import { Work } from "./pages/work";
 import { WeaponShop } from "./pages/weaponShop";
 import { MagicShop } from "./pages/magicShop";
 import { Dungeon } from "./pages/dungeon";
+import { Ranking } from "./pages/ranking";
 
 function App() {
   return (
@@ -19,11 +20,13 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route path="/" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/:email" element={<Profile />} />
               <Route path="/quests" element={<Quests />} />
               <Route path="/work" element={<Work />} />
               <Route path="/weaponshop" element={<WeaponShop />} />
               <Route path="/magicshop" element={<MagicShop />} />
               <Route path="/dungeon" element={<Dungeon />} />
+              <Route path="/ranking" element={<Ranking />} />
             </Route>
           </Routes>
         </BrowserRouter>

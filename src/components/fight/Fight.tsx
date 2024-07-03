@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { IFetchedUser } from "../../services/user";
+import { IFetchedUser, fightPlayer } from "../../services/user";
 import { collectCurrentQuestRewards } from "../../services/quest";
 import { fightDungeon } from "../../services/dungeon";
 
@@ -9,6 +9,7 @@ interface FightProps {
   setFightEnded: React.Dispatch<React.SetStateAction<boolean>>;
   setFightWon: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+  email?: string;
 }
 
 interface Monster {
@@ -31,6 +32,7 @@ export const Fight: FC<FightProps> = ({
   setFightEnded,
   setFightWon,
   setIsLoaded,
+  email,
 }) => {
   const [actions, setActions] = useState<FightAction[]>([]);
   const [monster, setMonster] = useState<Monster>({
@@ -44,7 +46,7 @@ export const Fight: FC<FightProps> = ({
     user.constitution + 100
   );
 
-  // TODO: Instead of this, make fight and collect rewards endpoints different
+  // TODO: Instead of this, make fight and collect rewards endpoints different]
   useEffect(() => {
     switch (type) {
       case "quest":
@@ -84,6 +86,23 @@ export const Fight: FC<FightProps> = ({
         }
         break;
       case "player":
+        {
+          const fetchData = async () => {
+            const response = await fightPlayer(email!);
+
+            setActions(parseFightLog(response!.fightLog));
+            setFightWon(response!.fightWon);
+            setMonster({
+              name: response!.monsterName,
+              imageUrl: response!.monsterImageUrl,
+              lvl: response!.monsterLevel,
+              health: Math.round(response!.monsterHealth),
+            });
+          };
+
+          fetchData();
+        }
+        break;
     }
 
     setIsLoaded(true);

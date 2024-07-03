@@ -1,4 +1,5 @@
 import { getUserFromStorage } from "../utils/localStorage";
+import { ICollectCurrentQuestRewardsResponse } from "./quest";
 
 const baseUrl = "http://localhost:8080/users";
 
@@ -82,7 +83,6 @@ export const initialItem: IItem = {
   lvl: "",
   damageMin: 0,
   damageMax: 0,
-  damageAverage: 0,
   strength: 0,
   dexterity: 0,
   constitution: 0,
@@ -186,7 +186,6 @@ export interface IItem {
   lvl: string;
   damageMin: number;
   damageMax: number;
-  damageAverage: number;
   strength: number;
   dexterity: number;
   constitution: number;
@@ -459,4 +458,26 @@ export const buyItem = async (slotKey: string, shopType: string) => {
   });
 
   return response.status;
+};
+
+export const fightPlayer = async (email: string) => {
+  const jwt = getUserFromStorage()!.token;
+
+  if (!jwt) {
+    return;
+  }
+
+  const response = await fetch(`${baseUrl}/fight/${email}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  // TODO: Change this interface
+  const responseData: ICollectCurrentQuestRewardsResponse =
+    await response.json();
+
+  return responseData;
 };

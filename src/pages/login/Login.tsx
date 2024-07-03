@@ -40,7 +40,7 @@ export const Login: FC = () => {
         <form
           data-testid="form"
           onSubmit={handleLogin}
-          className="border-2 rounded-md p-5 bg-blue-200 flex flex-col justify-center items-center"
+          className="border-2 rounded-md p-5 bg-blue-200 bg-opacity-60 flex flex-col justify-center items-center"
         >
           <h2 className="m-6 text-center text-2xl font-bold text-accent">
             Log in

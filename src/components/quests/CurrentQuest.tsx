@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { IFetchedUser } from "../../services/user";
 import { cancelCurrentQuest } from "../../services/quest";
 
@@ -34,10 +34,10 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
       );
       setRemainingTime(newRemainingTime);
 
-      // Check if remaining time is 0 and call setRerender(true)
+      // Check if remaining time is 0 and call setRerender(!rerender)
       if (newRemainingTime === 0) {
         clearInterval(interval); // Stop the interval after reaching 00:00
-        setRerender(true);
+        setRerender(!rerender);
       }
 
       SetIsLoading(false);
@@ -64,7 +64,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
   };
 
   return (
-    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200">
+    <div className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200 bg-opacity-60">
       <div
         className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200"
         style={backgroundImageStyle}

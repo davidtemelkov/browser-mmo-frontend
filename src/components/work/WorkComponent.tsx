@@ -37,7 +37,7 @@ export const WorkComponent: FC<WorkComponentProps> = ({
 
   return (
     <div
-      className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200"
+      className="flex flex-col w-[100%] h-[100%] justify-between items-center bg-blue-200 bg-opacity-60"
       style={backgroundImageStyle}
     >
       <div className="justify-start mt-[5%]">
