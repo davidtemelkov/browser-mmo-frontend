@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { getUser } from "../../services/user";
 import { getEmailFromStorage } from "../../utils/localStorage";
-import { useNavigate } from "react-router-dom";
 import {
   CollectWorkRewards,
   CurrentWork,
@@ -12,7 +11,6 @@ import { useUser } from "../../contexts/userContext";
 export const Work: FC = () => {
   const { user, setUser } = useUser();
   const [rerender, setRerender] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
