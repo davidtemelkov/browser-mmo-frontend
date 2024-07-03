@@ -1,7 +1,7 @@
 import { getUserFromStorage } from "../utils/localStorage";
 import { IWork } from "./user";
 
-const baseUrl = "http://localhost:8080/work";
+const baseUrl = "https://browser-mmo-backend.fly.dev/work";
 
 export const setWork = async (work: IWork) => {
   const jwt = getUserFromStorage()!.token;

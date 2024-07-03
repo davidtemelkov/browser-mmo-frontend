@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080/bosses";
+const baseUrl = "https://browser-mmo-backend.fly.dev/bosses";
 
 export interface IBoss {
   name: string;

@@ -1,7 +1,7 @@
 import { getUserFromStorage } from "../utils/localStorage";
 import { ICollectCurrentQuestRewardsResponse } from "./quest";
 
-const baseUrl = "http://localhost:8080/dungeon/";
+const baseUrl = "https://browser-mmo-backend.fly.dev/dungeon/";
 
 export const fightDungeon = async () => {
   const jwt = getUserFromStorage()!.token;

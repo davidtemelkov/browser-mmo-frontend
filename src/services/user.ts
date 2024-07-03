@@ -1,7 +1,7 @@
 import { getUserFromStorage } from "../utils/localStorage";
 import { ICollectCurrentQuestRewardsResponse } from "./quest";
 
-const baseUrl = "http://localhost:8080/users";
+const baseUrl = "https://browser-mmo-backend.fly.dev/users";
 
 export interface IValueLogin {
   email: string;

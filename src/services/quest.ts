@@ -10,7 +10,7 @@ export interface ICollectCurrentQuestRewardsResponse {
   monsterHealth: number;
 }
 
-const baseUrl = "http://localhost:8080/quests";
+const baseUrl = "https://browser-mmo-backend.fly.dev/quests";
 
 export const generateQuests = async () => {
   const jwt = getUserFromStorage()!.token;
