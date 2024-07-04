@@ -34,7 +34,22 @@ export const Quests: FC = () => {
     fetchData();
   }, [rerender]);
 
-  const isQuestExpired = new Date(user.questingUntil).getTime() <= Date.now();
+  let questingUntilUTC = 0;
+
+  if (user.questingUntil !== "") {
+    const questingUntil = user.questingUntil;
+    const [datePart, timePart] = questingUntil.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const [hour, minute, second] = timePart.split(":").map(Number);
+
+    questingUntilUTC = Date.UTC(year, month - 1, day, hour, minute, second);
+  }
+
+  const currentUTC = Date.now();
+
+  const isQuestExpired =
+    user.questingUntil !== "" ? questingUntilUTC <= currentUTC : false;
+
   if (isQuestExpired) {
     return (
       <CollectQuestReward

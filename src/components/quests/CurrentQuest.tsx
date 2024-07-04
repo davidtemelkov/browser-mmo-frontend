@@ -22,15 +22,27 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
   const [isLoading, SetIsLoading] = useState<boolean>(true);
 
   useMemo(() => {
-    const questingUntilTime = new Date(user.questingUntil).getTime();
-    const currentTime = new Date().getTime();
-    const timeDifference = questingUntilTime - currentTime;
+    const questingUntil = user.questingUntil;
+    const [datePart, timePart] = questingUntil.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const [hour, minute, second] = timePart.split(":").map(Number);
+
+    const questingUntilUTC = Date.UTC(
+      year,
+      month - 1,
+      day,
+      hour,
+      minute,
+      second
+    );
+    const currentUTC = Date.now();
+    const timeDifference = questingUntilUTC - currentUTC;
 
     // Update the remaining time every second
     const interval = setInterval(() => {
       const newRemainingTime = Math.max(
         0,
-        timeDifference - (Date.now() - currentTime)
+        timeDifference - (Date.now() - currentUTC)
       );
       setRemainingTime(newRemainingTime);
 

@@ -21,7 +21,22 @@ export const Work: FC = () => {
     fetchData();
   }, [rerender]);
 
-  const isWorkExpired = new Date(user.workingUntil).getTime() <= Date.now();
+  let workingUntilUTC = 0;
+
+  if (user.workingUntil !== "") {
+    const workingUntil = user.workingUntil;
+    const [datePart, timePart] = workingUntil.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const [hour, minute, second] = timePart.split(":").map(Number);
+
+    workingUntilUTC = Date.UTC(year, month - 1, day, hour, minute, second);
+  }
+
+  const currentUTC = Date.now();
+
+  const isWorkExpired =
+    user.workingUntil !== "" ? workingUntilUTC <= currentUTC : false;
+
   if (isWorkExpired) {
     return (
       <CollectWorkRewards

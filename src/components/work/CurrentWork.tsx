@@ -22,15 +22,27 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
   const [isLoading, SetIsLoading] = useState<boolean>(true);
 
   useMemo(() => {
-    const workingUnitlTime = new Date(user.workingUntil).getTime();
-    const currentTime = new Date().getTime();
-    const timeDifference = workingUnitlTime - currentTime;
+    const workingUntil = user.workingUntil;
+    const [datePart, timePart] = workingUntil.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const [hour, minute, second] = timePart.split(":").map(Number);
+
+    const workingUntilUTC = Date.UTC(
+      year,
+      month - 1,
+      day,
+      hour,
+      minute,
+      second
+    );
+    const currentUTC = Date.now();
+    const timeDifference = workingUntilUTC - currentUTC;
 
     // Update the remaining time every second
     const interval = setInterval(() => {
       const newRemainingTime = Math.max(
         0,
-        timeDifference - (Date.now() - currentTime)
+        timeDifference - (Date.now() - currentUTC)
       );
       setRemainingTime(newRemainingTime);
 
@@ -44,7 +56,7 @@ export const CurrentWork: FC<CurrentWorkProps> = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [user.questingUntil]);
+  }, [user.workingUntil]);
 
   const formatTime = (ms: number): string => {
     const seconds = Math.floor((ms / 1000) % 60);
