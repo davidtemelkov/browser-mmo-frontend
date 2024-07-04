@@ -62,6 +62,11 @@ export const Fight: FC<FightProps> = ({
               lvl: response!.monsterLevel,
               health: Math.round(response!.monsterHealth),
             });
+
+            const timer = setTimeout(() => {
+              setFightEnded(true);
+            }, parseFightLog(response!.fightLog).length * 800);
+            return () => clearTimeout(timer);
           };
 
           fetchData();
@@ -80,6 +85,11 @@ export const Fight: FC<FightProps> = ({
               lvl: response!.monsterLevel,
               health: Math.round(response!.monsterHealth),
             });
+
+            const timer = setTimeout(() => {
+              setFightEnded(true);
+            }, parseFightLog(response!.fightLog).length * 800);
+            return () => clearTimeout(timer);
           };
 
           fetchData();
@@ -98,6 +108,11 @@ export const Fight: FC<FightProps> = ({
               lvl: response!.monsterLevel,
               health: Math.round(response!.monsterHealth),
             });
+
+            const timer = setTimeout(() => {
+              setFightEnded(true);
+            }, parseFightLog(response!.fightLog).length * 800);
+            return () => clearTimeout(timer);
           };
 
           fetchData();
@@ -124,12 +139,6 @@ export const Fight: FC<FightProps> = ({
         }
         setCurrentActionIndex(currentActionIndex + 1);
       }, 800); // Delay between actions
-      return () => clearTimeout(timer);
-    } else {
-      // TODO: Figure why this doesn't work and shows rewards from the start
-      const timer = setTimeout(() => {
-        setFightEnded(true);
-      }, actions.length * 100);
       return () => clearTimeout(timer);
     }
   }, [currentActionIndex, actions, user.name]);
