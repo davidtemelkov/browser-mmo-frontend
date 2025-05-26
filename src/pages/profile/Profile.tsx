@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { Fight } from "../../components/fight";
 import { Inventory, Stats } from "../../components/profile";
 
+// TODO: v2.1 !! Think about caching to avoid spamming get user requests
 export const Profile: FC = () => {
   const { user, setUser } = useUser();
   const [enemy, setEnemy] = useState<IFetchedUser>(initalUser);

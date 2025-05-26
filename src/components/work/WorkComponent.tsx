@@ -13,6 +13,7 @@ export const WorkComponent: FC<WorkComponentProps> = ({
   rerender,
   setRerender,
 }) => {
+  // TODO: move this to public image
   const backgroundImageStyle = {
     backgroundImage: `url(https://i.pinimg.com/originals/8f/e4/72/8fe47283864b4bbeba9c21b20964f38b.jpg)`,
     backgroundSize: "cover",

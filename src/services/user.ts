@@ -1,7 +1,7 @@
 import { getUserFromStorage } from "../utils/localStorage";
-import { ICollectCurrentQuestRewardsResponse } from "./quest";
 
 const baseUrl = "https://browser-mmo-backend.fly.dev/users";
+//const baseUrl = "http://localhost:8080/users";
 
 export interface IValueLogin {
   email: string;
@@ -16,13 +16,14 @@ export interface IValueRegister {
 }
 
 export interface IFetchedUser {
+  id: string;
   name: string;
   email: string;
   createdOn: string;
-  imageURL: string;
+  imageId: string;
   lvl: number;
   gold: number;
-  EXP: number;
+  exp: number;
   bigDPoints: number;
   strength: number;
   dexterity: number;
@@ -37,7 +38,7 @@ export interface IFetchedUser {
   magicShop: Record<string, IItem>;
   inventory: Record<string, IItem>;
   mount: string;
-  mountImageURL: string;
+  mountImageId: string;
   isQuesting: boolean;
   isWorking: boolean;
   quests: Record<string, IQuest>;
@@ -57,11 +58,11 @@ export interface IFetchedUser {
 }
 
 export interface IQuest {
-  Name: string;
-  ImageURL: string;
-  Time: string;
-  EXP: string;
-  Gold: string;
+  id: string;
+  name: string;
+  time: string;
+  exp: string;
+  gold: string;
 }
 
 export interface IWork {
@@ -70,14 +71,15 @@ export interface IWork {
 }
 
 export const initialQuest: IQuest = {
-  Name: "", // Note: Property names should match the response
-  ImageURL: "",
-  Time: "",
-  EXP: "",
-  Gold: "",
+  id: "",
+  name: "",
+  time: "",
+  exp: "",
+  gold: "",
 };
 
 export const initialItem: IItem = {
+  id: "",
   whatItem: "",
   name: "",
   lvl: "",
@@ -90,18 +92,18 @@ export const initialItem: IItem = {
   armourAmount: 0,
   blockChance: 0,
   isLegendary: false,
-  imageURL: "",
   price: 0,
 };
 
 export const initalUser: IFetchedUser = {
+  id: "",
   name: "name",
   email: "email@abv.bg",
   createdOn: "00-00-00T00:000:00",
-  imageURL: "",
+  imageId: "",
   lvl: 0,
   gold: 0,
-  EXP: 0,
+  exp: 0,
   bigDPoints: 0,
   strength: 0,
   dexterity: 0,
@@ -160,7 +162,7 @@ export const initalUser: IFetchedUser = {
     Item15: { ...initialItem },
   },
   mount: "",
-  mountImageURL: "",
+  mountImageId: "",
   isQuesting: false,
   isWorking: false,
   quests: {
@@ -181,6 +183,7 @@ export const initalUser: IFetchedUser = {
 };
 
 export interface IItem {
+  id: string;
   whatItem: string;
   name: string;
   lvl: string;
@@ -193,8 +196,17 @@ export interface IItem {
   armourAmount: number;
   blockChance: number;
   isLegendary: boolean;
-  imageURL: string;
   price: number;
+}
+
+// TODO: Prorably can be the same collect rewards response
+export interface ICollectCurrentDuelRewardsResponse {
+  fightLog: string;
+  fightWon: boolean;
+  userName: string;
+  userImageId: string;
+  userLvl: number;
+  userHealth: number;
 }
 
 export const login = async (values: IValueLogin) => {
@@ -441,7 +453,7 @@ export const buyItem = async (slotKey: string, shopType: string) => {
   const jwt = getUserFromStorage()!.token;
 
   const url =
-    shopType == "magicshop"
+    shopType == "magicShop"
       ? `${baseUrl}/shops/magic/${slotKey}`
       : `${baseUrl}/shops/weapon/${slotKey}`;
 
@@ -475,8 +487,7 @@ export const fightPlayer = async (email: string) => {
     },
   });
 
-  // TODO: Change this interface
-  const responseData: ICollectCurrentQuestRewardsResponse =
+  const responseData: ICollectCurrentDuelRewardsResponse =
     await response.json();
 
   return responseData;

@@ -19,7 +19,7 @@ export const Quests: FC = () => {
       const fetchedUser = await getUser(getEmailFromStorage()!);
       setUser(fetchedUser!);
 
-      if (fetchedUser!.quests.Quest0.ImageURL === "") {
+      if (fetchedUser!.quests.Quest0.id === "") {
         await generateQuests();
         setRerender(!rerender);
       }

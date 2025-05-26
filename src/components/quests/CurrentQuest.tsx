@@ -14,7 +14,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
   setRerender,
 }) => {
   const backgroundImageStyle = {
-    backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
+    backgroundImage: `url(/images/${user.currentQuest.CurrentQuest.id}.jpg)`,
     backgroundSize: "cover",
   };
 
@@ -64,7 +64,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const questTimeParts = user.currentQuest.CurrentQuest.Time.split(" ");
+  const questTimeParts = user.currentQuest.CurrentQuest.time.split(" ");
   const totalQuestTimeInMinutes = parseInt(questTimeParts[0], 10);
 
   const progressBarStyle = {
@@ -83,7 +83,7 @@ export const CurrentQuest: FC<CurrentQuestProps> = ({
       >
         <div className="justify-start mt-[5%]">
           <h1 className="text-[2rem] font-semibold ">
-            {user.currentQuest.CurrentQuest.Name}
+            {user.currentQuest.CurrentQuest.name}
           </h1>
         </div>
         {isLoading ? (

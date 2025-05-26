@@ -1,16 +1,17 @@
 import { getUserFromStorage } from "../utils/localStorage";
 import { IQuest } from "./user";
 
+const baseUrl = "https://browser-mmo-backend.fly.dev/quests";
+// const baseUrl = "http://localhost:8080/quests";
+
 export interface ICollectCurrentQuestRewardsResponse {
   fightLog: string;
   fightWon: boolean;
   monsterName: string;
-  monsterImageUrl: string;
+  monsterId: string;
   monsterLevel: number;
   monsterHealth: number;
 }
-
-const baseUrl = "https://browser-mmo-backend.fly.dev/quests";
 
 export const generateQuests = async () => {
   const jwt = getUserFromStorage()!.token;

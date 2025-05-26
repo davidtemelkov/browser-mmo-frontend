@@ -112,9 +112,9 @@ export const Shop: FC<ShopProps> = ({
               const itemKey = `Item${slotNumber}`;
               const imageUrl =
                 type == "magicShop"
-                  ? user.magicShop[itemKey]?.imageURL ||
+                  ? `/images/${user.magicShop[itemKey]?.id}.png` ||
                     "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
-                  : user.weaponShop[itemKey]?.imageURL ||
+                  : `/images/${user.weaponShop[itemKey]?.id}.png` ||
                     "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
               return (
                 <div
@@ -122,7 +122,7 @@ export const Shop: FC<ShopProps> = ({
                   className="flex border rounded-md w-[20%] border-blue-300"
                   onClick={() => handleBuyItem(itemKey)}
                   onMouseEnter={() =>
-                    user.weaponShop[itemKey].imageURL !== ""
+                    user.weaponShop[itemKey].id !== ""
                       ? setHoveredItem(
                           type == "magicShop"
                             ? user.magicShop[itemKey]

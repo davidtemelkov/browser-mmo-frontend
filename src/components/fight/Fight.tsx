@@ -13,9 +13,9 @@ interface FightProps {
 }
 
 interface Monster {
+  id: string;
   name: string;
   lvl: number;
-  imageUrl: string;
   health: number;
 }
 
@@ -36,9 +36,9 @@ export const Fight: FC<FightProps> = ({
 }) => {
   const [actions, setActions] = useState<FightAction[]>([]);
   const [monster, setMonster] = useState<Monster>({
+    id: "",
     name: "",
     lvl: 0,
-    imageUrl: "",
     health: 0,
   });
   const [currentActionIndex, setCurrentActionIndex] = useState<number>(0);
@@ -58,7 +58,7 @@ export const Fight: FC<FightProps> = ({
             setFightWon(response!.fightWon);
             setMonster({
               name: response!.monsterName,
-              imageUrl: response!.monsterImageUrl,
+              id: response!.monsterId,
               lvl: response!.monsterLevel,
               health: Math.round(response!.monsterHealth),
             });
@@ -80,8 +80,8 @@ export const Fight: FC<FightProps> = ({
             setActions(parseFightLog(response!.fightLog));
             setFightWon(response!.fightWon);
             setMonster({
+              id: response!.monsterId,
               name: response!.monsterName,
-              imageUrl: response!.monsterImageUrl,
               lvl: response!.monsterLevel,
               health: Math.round(response!.monsterHealth),
             });
@@ -103,10 +103,10 @@ export const Fight: FC<FightProps> = ({
             setActions(parseFightLog(response!.fightLog));
             setFightWon(response!.fightWon);
             setMonster({
-              name: response!.monsterName,
-              imageUrl: response!.monsterImageUrl,
-              lvl: response!.monsterLevel,
-              health: Math.round(response!.monsterHealth),
+              name: response!.userName,
+              id: response!.userImageId,
+              lvl: response!.userLvl,
+              health: Math.round(response!.userHealth),
             });
 
             const timer = setTimeout(() => {
@@ -164,7 +164,11 @@ export const Fight: FC<FightProps> = ({
   return (
     <div className="flex justify-between w-full">
       <div className="flex flex-col items-center justify-end w-[40%]">
-        <img src={user.imageURL} alt={user.name} className="w-[50%] h-[70%]" />
+        <img
+          src={`/images/${user.imageId}.jpg`}
+          alt={user.name}
+          className="w-[50%] h-[70%]"
+        />
         <h2 className="mt-3">{user.name}</h2>
         <div className="w-[70%] bg-gray-300 mt-3">
           <div
@@ -179,7 +183,11 @@ export const Fight: FC<FightProps> = ({
         </div>
       </div>
       <div className="flex flex-col items-center justify-end w-[40%]">
-        <img src={monster.imageUrl} alt="monster" className="w-[50%] h-[70%]" />
+        <img
+          src={`/images/${monster.id}.jpg`}
+          alt="monster"
+          className="w-[50%] h-[70%]"
+        />
         <h2 className="mt-3">{monster.name}</h2>
         <div className="w-[70%] bg-gray-300 mt-3">
           <div

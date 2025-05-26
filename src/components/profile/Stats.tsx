@@ -75,7 +75,7 @@ export const Stats: FC<StatsProps> = ({ user, setUser, userIsPlayer }) => {
       <div className="flex rounded-md w-full h-[25%]">
         <div className="w-[27%]">
           <img
-            src={user?.imageURL}
+            src={`/images/${user?.imageId}.jpg`}
             alt={user?.name}
             className="w-full rounded-md"
           />
@@ -94,7 +94,7 @@ export const Stats: FC<StatsProps> = ({ user, setUser, userIsPlayer }) => {
               <tr className="table-row items-baseline  space-x-4">
                 <td className="font-semibold text-[125%]">Experience</td>
                 <td className="font-semibold text-[110%] pl-9">
-                  {user.EXP}/{CalculateExpForLvlUp(user.lvl)}
+                  {user.exp}/{CalculateExpForLvlUp(user.lvl)}
                 </td>
               </tr>
               <tr className="table-row items-baseline  space-x-4">

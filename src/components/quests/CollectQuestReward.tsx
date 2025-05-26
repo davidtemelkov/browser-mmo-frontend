@@ -19,7 +19,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const backgroundImageStyle = {
-    backgroundImage: `url(${user.currentQuest.CurrentQuest.ImageURL})`,
+    backgroundImage: `url(${user.currentQuest.CurrentQuest.id}.jpg)`,
     backgroundSize: "cover",
   };
 
@@ -29,7 +29,7 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
       style={backgroundImageStyle}
     >
       <h1 className="text-[2rem] font-semibold mt-[5%]">
-        {user.currentQuest.CurrentQuest.Name}
+        {user.currentQuest.CurrentQuest.name}
       </h1>
       <Fight
         type="quest"
@@ -43,8 +43,8 @@ export const CollectQuestReward: FC<CollectQuestRewardProps> = ({
           <>
             {fightWon && isLoaded ? (
               <p className="text-[1.25rem] font-semibold">
-                You won {user.currentQuest.CurrentQuest.EXP} experience and{" "}
-                {user.currentQuest.CurrentQuest.Gold} gold.
+                You won {user.currentQuest.CurrentQuest.exp} experience and{" "}
+                {user.currentQuest.CurrentQuest.gold} gold.
               </p>
             ) : (
               <p className="text-[1.25rem] font-semibold mb-[1%]">

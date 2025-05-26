@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from "react";
 import { Fight } from "../../components/fight";
 import { useUser } from "../../contexts/userContext";
-import { IBoss, getBoss } from "../../services/boss";
+import { IBoss, getDungeonBoss } from "../../services/dungeon";
 
 export const Dungeon: FC = () => {
   const { user } = useUser();
   const [boss, setBoss] = useState<IBoss>({
+    id: "",
     name: "",
-    imageUrl: "",
     lvl: "",
     strength: 0,
     dexterity: 0,
@@ -22,15 +22,15 @@ export const Dungeon: FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getBoss(user.dungeon.toString());
+      const response = await getDungeonBoss(user.dungeon.toString());
       setBoss({
-        name: response.name,
-        imageUrl: response.imageUrl,
-        lvl: response.lvl,
-        strength: response.strength,
-        dexterity: response.dexterity,
-        constitution: response.constitution,
-        intelligence: response.intelligence,
+        id: response!.id, // TODO: Why are these erroring without !
+        name: response!.name,
+        lvl: response!.lvl,
+        strength: response!.strength,
+        dexterity: response!.dexterity,
+        constitution: response!.constitution,
+        intelligence: response!.intelligence,
       });
     };
 
@@ -76,7 +76,10 @@ export const Dungeon: FC = () => {
       ) : (
         // TODO: Add dungeoon position somewhere
         <div className="flex justify-between items-center min-h-2/3 w-full">
-          <img className="max-w-[30%] max-h-[70%] ml-10" src={boss.imageUrl} />
+          <img
+            className="max-w-[30%] max-h-[70%] ml-10"
+            src={`/images/${boss.id}.jpg`}
+          />
           <table className="w-[20%] table mr-[7rem]">
             <tbody>
               <tr className="table-row items-baseline space-x-4">

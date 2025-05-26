@@ -68,15 +68,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="weapon"
             className="border rounded-md mb-2 w-[100%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Weapon.imageURL !== "" &&
+              user.equippedItems.Weapon.id !== "" &&
               setHoveredItem(user.equippedItems.Weapon)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Weapon.imageURL !== ""
-                  ? user.equippedItems.Weapon.imageURL
+                user.equippedItems.Weapon.id !== ""
+                  ? `images/${user.equippedItems.Weapon.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -87,15 +87,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="gloves"
             className="border rounded-md mb-2 w-[100%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Gloves.imageURL !== "" &&
+              user.equippedItems.Gloves.id !== "" &&
               setHoveredItem(user.equippedItems.Gloves)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Gloves.imageURL !== ""
-                  ? user.equippedItems.Gloves.imageURL
+                user.equippedItems.Gloves.id !== ""
+                  ? `images/${user.equippedItems.Gloves.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -108,15 +108,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="helmet"
             className="border rounded-md mb-2 w-[80%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Helmet.imageURL !== "" &&
+              user.equippedItems.Helmet.id !== "" &&
               setHoveredItem(user.equippedItems.Helmet)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Helmet.imageURL !== ""
-                  ? user.equippedItems.Helmet.imageURL
+                user.equippedItems.Helmet.id !== ""
+                  ? `images/${user.equippedItems.Helmet.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -127,15 +127,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="chestplate"
             className="border rounded-md mb-2 w-[80%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Chestplate.imageURL !== "" &&
+              user.equippedItems.Chestplate.id !== "" &&
               setHoveredItem(user.equippedItems.Chestplate)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Chestplate.imageURL !== ""
-                  ? user.equippedItems.Chestplate.imageURL
+                user.equippedItems.Chestplate.id !== ""
+                  ? `images/${user.equippedItems.Chestplate.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -146,15 +146,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="boots"
             className="border rounded-md mb-2 w-[80%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Boots.imageURL !== "" &&
+              user.equippedItems.Boots.id !== "" &&
               setHoveredItem(user.equippedItems.Boots)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Boots.imageURL !== ""
-                  ? user.equippedItems.Boots.imageURL
+                user.equippedItems.Boots.id !== ""
+                  ? `images/${user.equippedItems.Boots.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -167,15 +167,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="amulet"
             className="border rounded-md mb-2 w-[60%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Amulet.imageURL !== "" &&
+              user.equippedItems.Amulet.id !== "" &&
               setHoveredItem(user.equippedItems.Amulet)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Amulet.imageURL !== ""
-                  ? user.equippedItems.Amulet.imageURL
+                user.equippedItems.Amulet.id !== ""
+                  ? `images/${user.equippedItems.Amulet.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -186,15 +186,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="shield"
             className="border rounded-md mb-2 w-[100%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Shield.imageURL !== "" &&
+              user.equippedItems.Shield.id !== "" &&
               setHoveredItem(user.equippedItems.Shield)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Shield.imageURL !== ""
-                  ? user.equippedItems.Shield.imageURL
+                user.equippedItems.Shield.id !== ""
+                  ? `images/${user.equippedItems.Shield.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -205,15 +205,15 @@ export const Inventory: FC<InventoryProps> = ({
             id="ring"
             className="border rounded-md mb-2 w-[60%] border-blue-300"
             onMouseEnter={() =>
-              user.equippedItems.Ring.imageURL !== "" &&
+              user.equippedItems.Ring.id !== "" &&
               setHoveredItem(user.equippedItems.Ring)
             }
             onMouseLeave={() => setHoveredItem(null)}
           >
             <img
               src={
-                user.equippedItems.Ring.imageURL !== ""
-                  ? user.equippedItems.Ring.imageURL
+                user.equippedItems.Ring.id !== ""
+                  ? `images/${user.equippedItems.Ring.id}.png`
                   : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg"
               }
               alt=""
@@ -237,9 +237,10 @@ export const Inventory: FC<InventoryProps> = ({
               {[...Array(5)].map((_, slotIndex) => {
                 const slotNumber = groupIndex * 5 + slotIndex + 1;
                 const itemKey = `Item${slotNumber}`;
-                const imageUrl =
-                  user.inventory[itemKey]?.imageURL ||
-                  "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
+                const imagePath =
+                  user.inventory[itemKey]?.id !== ""
+                    ? `/images/${user.inventory[itemKey]?.id}.png`
+                    : "https://i.pinimg.com/originals/23/a3/f8/23a3f82a27cc41a66da055fd7d186117.jpg";
 
                 return (
                   <div
@@ -247,13 +248,13 @@ export const Inventory: FC<InventoryProps> = ({
                     className="border rounded-md w-[100%] border-blue-300 hover:cursor-pointer"
                     onClick={() => userIsPlayer && clickOnItemFunc(itemKey)}
                     onMouseEnter={() =>
-                      user.inventory[itemKey].imageURL !== ""
+                      user.inventory[itemKey].id !== ""
                         ? setHoveredItem(user.inventory[itemKey])
                         : () => {}
                     }
                     onMouseLeave={() => setHoveredItem(null)}
                   >
-                    <img src={imageUrl} alt="" className="h-[100%] w-[100%]" />
+                    <img src={imagePath} alt="" className="h-[100%] w-[100%]" />
                   </div>
                 );
               })}

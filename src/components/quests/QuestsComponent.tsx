@@ -32,14 +32,14 @@ export const QuestsComponent: FC<QuestsProps> = ({
       >
         <img
           className="w-[90%] h-[40%] rounded-md "
-          src={user.quests.Quest0.ImageURL}
-          alt={user.quests.Quest0.Name}
+          src={`/images/${user.quests.Quest0.id}.jpg`}
+          alt={user.quests.Quest0.name}
         />
-        <p className="text-xl font-semibold">{user.quests.Quest0.Name}</p>
-        <p className="text-xl font-semibold">EXP {user.quests.Quest0.EXP}</p>
-        <p className="text-xl font-semibold">Gold {user.quests.Quest0.Gold}</p>
+        <p className="text-xl font-semibold">{user.quests.Quest0.name}</p>
+        <p className="text-xl font-semibold">EXP {user.quests.Quest0.exp}</p>
+        <p className="text-xl font-semibold">Gold {user.quests.Quest0.gold}</p>
         <p className="text-xl font-semibold">
-          Duration {user.quests.Quest0.Time}
+          Duration {user.quests.Quest0.time}
         </p>
       </div>
       <div
@@ -52,14 +52,14 @@ export const QuestsComponent: FC<QuestsProps> = ({
       >
         <img
           className="w-[90%] h-[40%] rounded-md"
-          src={user.quests.Quest1.ImageURL}
-          alt={user.quests.Quest1.Name}
+          src={`/images/${user.quests.Quest1.id}.jpg`}
+          alt={user.quests.Quest1.name}
         />
-        <p className="text-xl font-semibold">{user.quests.Quest1.Name}</p>
-        <p className="text-xl font-semibold">EXP {user.quests.Quest1.EXP}</p>
-        <p className="text-xl font-semibold">Gold {user.quests.Quest1.Gold}</p>
+        <p className="text-xl font-semibold">{user.quests.Quest1.name}</p>
+        <p className="text-xl font-semibold">EXP {user.quests.Quest1.exp}</p>
+        <p className="text-xl font-semibold">Gold {user.quests.Quest1.gold}</p>
         <p className="text-xl font-semibold">
-          Duration {user.quests.Quest1.Time}
+          Duration {user.quests.Quest1.time}
         </p>
         <div className="mt-[40%] text-lg">{user.dailyQuestCount}/10</div>
       </div>
@@ -73,14 +73,14 @@ export const QuestsComponent: FC<QuestsProps> = ({
       >
         <img
           className="w-[90%] h-[40%] rounded-md"
-          src={user.quests.Quest2.ImageURL}
-          alt={user.quests.Quest2.Name}
+          src={`/images/${user.quests.Quest2.id}.jpg`}
+          alt={user.quests.Quest2.name}
         />
-        <p className="text-xl font-semibold">{user.quests.Quest2.Name}</p>
-        <p className="text-xl font-semibold">EXP {user.quests.Quest2.EXP}</p>
-        <p className="text-xl font-semibold">Gold {user.quests.Quest2.Gold}</p>
+        <p className="text-xl font-semibold">{user.quests.Quest2.name}</p>
+        <p className="text-xl font-semibold">EXP {user.quests.Quest2.exp}</p>
+        <p className="text-xl font-semibold">Gold {user.quests.Quest2.gold}</p>
         <p className="text-xl font-semibold">
-          Duration {user.quests.Quest2.Time}
+          Duration {user.quests.Quest2.time}
         </p>
       </div>
     </div>
