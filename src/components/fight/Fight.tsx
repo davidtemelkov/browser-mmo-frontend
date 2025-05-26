@@ -184,7 +184,7 @@ export const Fight: FC<FightProps> = ({
       </div>
       <div className="flex flex-col items-center justify-end w-[40%]">
         <img
-          src={`/images/${monster.id}.jpg`}
+          src={`/images/${monster.id}.png`}
           alt="monster"
           className="w-[50%] h-[70%]"
         />
