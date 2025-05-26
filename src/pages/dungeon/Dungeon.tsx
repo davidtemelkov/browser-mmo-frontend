@@ -78,7 +78,7 @@ export const Dungeon: FC = () => {
         <div className="flex justify-between items-center min-h-2/3 w-full">
           <img
             className="max-w-[30%] max-h-[70%] ml-10"
-            src={`/images/${boss.id}.jpg`}
+            src={`/images/${boss.id}.png`}
           />
           <table className="w-[20%] table mr-[7rem]">
             <tbody>
