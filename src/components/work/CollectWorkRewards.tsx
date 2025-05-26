@@ -27,7 +27,7 @@ export const CollectWorkRewards: FC<CollectWorkRewardsProps> = ({
 
     setUser((prevUser) => ({
       ...prevUser,
-      gold: prevUser.gold + +prevUser.currentQuest.CurrentQuest.Gold,
+      gold: prevUser.gold + +prevUser.currentQuest.CurrentQuest.gold,
     }));
 
     fetchData();
